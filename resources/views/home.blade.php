@@ -82,7 +82,7 @@
 
         <div class="container d-flex justify-content-between mt-5 mb-5" style="width: 100%">
 
-            <a class="card mb-3 me-5" style="text-decoration:none" href="" >
+            <a class="card mb-3 me-5" style="text-decoration:none" href="/facilities" >
                 <div class="row g-0">
                     <div class="col-md-8">
                         <img src="{{asset('images/home/main_banner.jpg') }}" class="img-fluid rounded-start" alt="...">

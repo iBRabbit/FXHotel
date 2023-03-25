@@ -21,10 +21,10 @@
                     <a class="nav-link text-primary" href="#">Rooms</a>
                 </li>
                 <li class="nav-item ps-2 pe-2">
-                    <a class="nav-link text-primary" href="#">Facilities</a>
+                    <a class="nav-link text-primary" href="/facilities">Facilities</a>
                 </li>
                 <li class="nav-item ps-2 pe-2">
-                    <a class="nav-link text-primary" href="#">About us</a>
+                    <a class="nav-link text-primary" href="/aboutus">About us</a>
                 </li>
                 
                 <li class="nav-item ps-2 pe-2">

@@ -27,3 +27,9 @@ Route::get('/aboutus', function () {
     ]);
 });
 
+Route::get('/facilities', function () {
+    return view('facilities', [
+        'pageTitle' => 'Our Facilities'
+    ]);
+});
+
