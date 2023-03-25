@@ -39,7 +39,6 @@
 @section('content')
     {{-- Pas pake layout ini jangan lupa buat kirim: image-url, image-alt, sama image-desc --}}
 
-
     {{-- Banner --}}
     <div class="page-banner-container">
         <img src="@yield('image-url')" alt="@yield('image-alt')" >

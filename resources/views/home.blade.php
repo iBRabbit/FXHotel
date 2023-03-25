@@ -72,7 +72,7 @@
     <div class="container d-flex flex-column" id="home_container">
 
         <div class="container d-flex justify-content-center mt-5" id="home_main_banner">
-            <img src="{{ asset('images/home/main_banner.jpg') }}" class="img-fluid " >
+            <img src="{{ asset('images/home/header-home.jpg') }}" class="img-fluid " >
                 <div class="home_main_rectangle"></div>    
                 <div class="home_main_banner_text">
                     <h1 class="text-center text-white" style="text-shadow: 2px 2px #636363; ">Relaxation at its finest</h1>
@@ -85,7 +85,7 @@
             <a class="card mb-3 me-5" style="text-decoration:none" href="/facilities" >
                 <div class="row g-0">
                     <div class="col-md-8">
-                        <img src="{{asset('images/home/main_banner.jpg') }}" class="img-fluid rounded-start" alt="...">
+                        <img src="{{asset('images/home/card-home-ourfacilities.jpg') }}" class="img-fluid rounded-start" alt="..." style="max-width: 400px">
                     </div>
                     <div class="col-md-4 d-flex align-items-center justify-content-center" style="background-color: #72AAFF">
                             <h1 class="text-end text-white ps-3 pe-3" style="text-shadow: 2px 2px #636363; ">Our Facilities</h1>               
@@ -102,14 +102,14 @@
                         <h1 class="text text-white ps-3 pe-3" style="text-shadow: 2px 2px #636363;">Our Delicacy</h1> 
                     </div>
                     <div class="col-md-8">
-                        <img src="{{asset('images/home/main_banner.jpg') }}" class="img-fluid rounded-start" alt="...">
+                        <img src="{{asset('images/home/card-home-ourdelicacies.jpg') }}" class="img-fluid rounded-start" alt="..." style="max-width: 400px">
                     </div>
                 </div>
             </a>
         </div>
 
         <div class="container mb-5" id="home_specialities_banner">
-            <img src="{{ asset('images/home/main_banner.jpg') }}" class="img-fluid"  style="width:100%;  height:30vh">
+            <img src="{{ asset('images/home/card-home-ourspecialities.jpg') }}" class="img-fluid"  style="width:100%;  height:30vh">
             <div class="home_specialities_rectangle"></div>    
             <div class="home_specialities_banner_text">
                 <h1 class="text-center text-white" style="text-shadow: 2px 2px #636363; ">Our Specialities</h1>
