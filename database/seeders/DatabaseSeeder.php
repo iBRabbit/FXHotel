@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CountrySeeder::class);
         $this->call(PrefixSeeder::class);
+        $this->call(PromoSeeder::class);
+        $this->call(RoomSeeder::class);
         \App\Models\User::factory(10)->create();
+        $this->call(ReservationsSeeder::class);
     }
 }

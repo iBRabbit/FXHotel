@@ -12,6 +12,19 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function country(){
+        return $this->belongsTo(Country::class, "country_id", "id");
+    }
+
+    public function prefix(){
+        // return $this->belongsTo(Prefix::class, "prefix_id", "id");
+        return $this->belongsTo(Prefix::class, "prefix_id", "id");
+    }
+
+    public function reservations(){
+        return $this->hasMany(Reservations::class, "user_id", "id");
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Reservations extends Model
 {
     use HasFactory;
+
+    public function room(){
+        return $this->belongsTo(Room::class, "room_id", "id");
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, "user_id", "id");
+    }
+
+    public function promo(){
+        return $this->belongsTo(Promo::class, "promo_id", "id");
+    }
 }

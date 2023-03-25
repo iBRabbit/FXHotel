@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->date('from');
             $table->date('to');
-            $table->unsignedBigInteger('promo_id');
+            $table->unsignedBigInteger('promo_id')->nullable();
             $table->foreign('promo_id')->references('id')->on('promos')->onDelete('cascade');
             $table->integer('total_adult');
             $table->integer('total_children');
