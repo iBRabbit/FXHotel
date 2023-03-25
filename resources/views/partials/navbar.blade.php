@@ -2,7 +2,9 @@
     <div class="container-fluid">
 
         {{-- Logo --}}
-        <img src="{{ asset('images/web_icon.png') }}" alt="FX Hotels" width="100vw">
+        <a href="/">
+            <img src="{{ asset('images/web_icon.png') }}" alt="FX Hotels" width="100vw">
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +15,7 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item button ps-2 pe-2">
-                    <a class="nav-link btn btn-primary" href="/reserve" style="color:white; width:10vw">Reserve Now</a>
+                    <a class="nav-link btn btn-primary" href="/reservations" style="color:white; width:10vw">Reserve Now</a>
                 </li>
 
                 <li class="nav-item ps-2 pe-2">
@@ -31,7 +33,7 @@
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle text-primary ps-2 pe-2" href="#" id="navbarDarkDropdownMenuLink"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->name}}
                         </a>
                         <ul class="dropdown-menu">
                             <li>
