@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReservationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +42,11 @@ Route::get('/delicacies', function () {
     ]);
 });
 
+Route::get('/register', [RegisterController::class, 'index']) -> middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']) -> middleware('guest');
+
+Route::get('/login', [LoginController::class, 'index'])-> name('login') -> middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']) -> middleware('guest');
+Route::post('/logout', [LoginController::class, 'logout']) -> middleware('auth');
+
+Route::get('/reservations', [ReservationsController::class, 'index']) -> middleware('auth');

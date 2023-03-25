@@ -92,8 +92,6 @@
                     </div>
                 </div>
 
-                
-
             </a>
 
             <a class="card mb-3" style="text-decoration:none" href="/delicacies">

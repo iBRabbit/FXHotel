@@ -10,7 +10,7 @@
 
     .page-banner-container img {
         width: 100%;
-        height: 40%;
+        height: 100%;
         object-fit: cover;
     }
 
@@ -32,6 +32,8 @@
         transform: translate(-50%, -50%);
         color: white;
         font-size: 50px;
+        width: 100%;
+        text-align: center;
         font-weight: bold;
     }
 </style>
@@ -41,11 +43,13 @@
 
     {{-- Banner --}}
     <div class="page-banner-container">
-        <img src="@yield('image-url')" alt="@yield('image-alt')" >
+        <img src="@yield('image-url')" alt="@yield('image-alt')" style="height:60vh">
         <div class="page-main-rectangle"></div>
         <div class="page-banner-text">@yield('image-desc')</div>
     </div>
 
-    @yield('page-content')
+    <div class="page-content-container">
+        @yield('page-content')
+    </div>
 
 @endsection
