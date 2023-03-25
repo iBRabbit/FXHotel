@@ -33,9 +33,9 @@
             </div>
         @endif
 
-        <div class="container">
+        <div class="container mt-5 mb-5">
             <div class="row">
-                <div class="col p-5" style="background-color: #dee2e6" >
+                <div class="col p-5 " style="background-color: #dee2e6" >
                     <form action="/login" method="post">
                         @csrf
                         <div class="mb-3">

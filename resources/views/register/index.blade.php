@@ -13,7 +13,7 @@
 @endsection
 
 @section('page-content')
-    <div class="register-container-box p-5" style="background-color: #dee2e6; border:0px solid black; border-radius: 10px">
+    <div class="register-container-box p-5  mt-5 mb-5" style="background-color: #dee2e6; border:0px solid black; border-radius: 10px">
 
         {{-- Error Message --}}
         @if ($errors->any())
