@@ -96,7 +96,7 @@
 
             </a>
 
-            <a class="card mb-3" style="text-decoration:none" href="">
+            <a class="card mb-3" style="text-decoration:none" href="/delicacies">
                 <div class="row g-0">
                     <div class="col-md-4 d-flex align-items-center justify-content-center" style="background-color: #72AAFF">
                         <h1 class="text text-white ps-3 pe-3" style="text-shadow: 2px 2px #636363;">Our Delicacy</h1> 

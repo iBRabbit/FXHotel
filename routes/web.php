@@ -33,3 +33,9 @@ Route::get('/facilities', function () {
     ]);
 });
 
+Route::get('/delicacies', function () {
+    return view('delicacies', [
+        'pageTitle' => 'Our Delicacies'
+    ]);
+});
+
