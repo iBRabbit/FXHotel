@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PrefixSeeder extends Seeder
 {
@@ -14,6 +15,10 @@ class PrefixSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('prefixes')->insert([
+            ['prefix' => 'Mr.'],
+            ['prefix' => 'Mrs.'],
+            ['prefix' => 'Ms.']
+        ]);
     }
 }
