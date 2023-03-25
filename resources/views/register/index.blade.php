@@ -36,8 +36,9 @@
     
                             <div class="gender-selector">
                                 <select class="form-select" id="prefix_id" name="prefix_id">
-                                    <option value="1">Mr.</option>
-                                    <option value="2">Mrs.</option>
+                                    @foreach ($prefixes as $prefix)
+                                        <option value="{{ $prefix->id }}">{{ $prefix->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             
@@ -58,9 +59,9 @@
                         <div class="input-group mb-3">
     
                             <div class="gender-selector">
-                                <select class="form-select" id="country_id" name="country_id">
+                                <select class="form-select" id="country" name="country">
                                     @foreach ($countryCodes as $cc)
-                                        <option value="{{ $cc['code']}}">{{ $cc['name'] . ' (+' . $cc['code'] . ')' }}</option>
+                                        <option value="{{ $cc['name'] . '#' . $cc['phone_code'] }}">{{ $cc['code'] . ' (' . $cc['phone_code'] . ')' }}</option>
                                     @endforeach
                                 </select>
                             </div>

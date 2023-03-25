@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->integer('prefix_id')->default(1);
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('country_id')->default(62);
             $table->string('phone');
+            $table->unsignedBigInteger('prefix_id')->default(1);
+            $table->unsignedBigInteger('country_id')->default(1);
+            $table->foreign('prefix_id')->references('id')->on('prefixes')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->string('postal');
             $table->string('password');
             $table->string('role');
