@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('promos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->text('promo_code');
         });
     }
 

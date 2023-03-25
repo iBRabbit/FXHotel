@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('delicacies', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->text('name');
+            $table->binary('image');
         });
     }
 
