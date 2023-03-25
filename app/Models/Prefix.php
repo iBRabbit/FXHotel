@@ -9,8 +9,8 @@ class Prefix extends Model
 {
     use HasFactory;
     
-    public function user(){
-        return $this->hasOne(User::class, "prefix_id", "id");
-    }
+    // public function user(){
+    //     return $this->hasOne(User::class, "prefix_id", "id");
+    // }
 
 }

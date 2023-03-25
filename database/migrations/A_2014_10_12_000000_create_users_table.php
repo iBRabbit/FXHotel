@@ -15,12 +15,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('prefix_id');
-            $table->foreign('prefix_id')->references('id')->on('prefixes')->onDelete('cascade');
+            $table->unsignedBigInteger('prefix_id')->default(1);
             $table->string('name');
             $table->string('email')->unique();
-            $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->unsignedBigInteger('country_id')->default(62);
             $table->string('phone');
             $table->string('postal');
             $table->string('password');
