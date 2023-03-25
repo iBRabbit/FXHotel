@@ -20,12 +20,12 @@ return new class extends Migration
             $table->date('from');
             $table->date('to');
             $table->unsignedBigInteger('promo_id');
-            $table->foreign('promo_id')->references('id')->on('promo')->onDelete('cascade');
+            $table->foreign('promo_id')->references('id')->on('promos')->onDelete('cascade');
             $table->integer('total_adult');
             $table->integer('total_children');
             $table->integer('total_room');
             $table->integer('total_price');
-            $table->text('additional');
+            $table->string('additional');
         });
     }
 
