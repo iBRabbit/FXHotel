@@ -15,7 +15,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function store(Request $request) {
+    public function store() {
         
         $data = request()->validate([
             'prefix_id' => 'required',
