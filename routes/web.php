@@ -21,3 +21,9 @@ Route::get('/', function () {
 
 Route::redirect('/home', '/');
 
+Route::get('/aboutus', function () {
+    return view('aboutus', [
+        'pageTitle' => 'About Us'
+    ]);
+});
+
