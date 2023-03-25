@@ -34,15 +34,15 @@
     <div class="social-media-container">
             
             <a href="https://www.facebook.com/" target="_blank" class="social-media-link">
-                <img src="{{ asset('images/facebook.png') }}" alt="Facebook" width="30px" height="30px">
+                <img src="{{ asset('images/footer/facebook.png') }}" alt="Facebook" width="30px" height="30px">
             </a>
             
             <a href="https://www.twitter.com/" target="_blank" class="social-media-link">
-                <img src="{{ asset('images/twitter.png') }}" alt="Twitter" width="30px" height="30px">
+                <img src="{{ asset('images/footer/twitter.png') }}" alt="Twitter" width="30px" height="30px">
             </a>
 
             <a href="https://www.instagram.com/" target="_blank" class="social-media-link">
-                <img src="{{ asset('images/instagram.png') }}" alt="Instagram" width="30px" height="30px">
+                <img src="{{ asset('images/footer/instagram.png') }}" alt="Instagram" width="30px" height="30px">
             </a>
 
     </div>
