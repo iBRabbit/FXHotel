@@ -20,7 +20,7 @@
 
                 <li class="nav-item ps-2 pe-2">
 
-                    <a class="nav-link text-primary" href="#">Rooms</a>
+                    <a class="nav-link text-primary" href="/rooms">Rooms</a>
                 </li>
                 <li class="nav-item ps-2 pe-2">
                     <a class="nav-link text-primary" href="/facilities">Facilities</a>
