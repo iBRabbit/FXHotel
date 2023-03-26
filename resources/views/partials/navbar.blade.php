@@ -33,7 +33,7 @@
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle text-primary ps-2 pe-2" href="#" id="navbarDarkDropdownMenuLink"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name}}
+                            {{ "Hi, " . Auth::user()->getLastNameAttribute()}}
                         </a>
                         <ul class="dropdown-menu">
                             <li>

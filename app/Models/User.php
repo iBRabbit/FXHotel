@@ -29,6 +29,16 @@ class User extends Authenticatable
         'id'
     ];
 
+    public function getLastNameAttribute($withPrefix = true){
+        $name = explode(" ", $this->name);
+        $prefix = $this->prefix->prefix;
+
+        if($withPrefix)
+            return (count($name) > 1) ? $prefix . " " . $name[count($name) - 1] :  $prefix . " " . $name[0];
+
+        return (count($name) > 1) ? $name[count($name) - 1] :  $name[0];
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

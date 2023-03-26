@@ -16,9 +16,9 @@ class PrefixSeeder extends Seeder
     public function run()
     {
         DB::table('prefixes')->insert([
-            ['name' => 'Mr.'],
-            ['name' => 'Mrs.'],
-            ['name' => 'Ms.']
+            ['prefix' => 'Mr.'],
+            ['prefix' => 'Mrs.'],
+            ['prefix' => 'Ms.']
         ]);
     }
 }

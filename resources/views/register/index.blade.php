@@ -37,7 +37,7 @@
                             <div class="gender-selector">
                                 <select class="form-select" id="prefix_id" name="prefix_id">
                                     @foreach ($prefixes as $prefix)
-                                        <option value="{{ $prefix->id }}">{{ $prefix->name }}</option>
+                                        <option value="{{ $prefix->id }}">{{ $prefix->prefix }}</option>
                                     @endforeach
                                 </select>
                             </div>

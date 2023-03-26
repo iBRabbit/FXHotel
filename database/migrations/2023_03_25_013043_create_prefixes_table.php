@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('prefixes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');  // Diganti biar gak ambigu
+            $table->string('prefix'); 
         });
     }
 
