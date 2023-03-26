@@ -29,6 +29,10 @@ class User extends Authenticatable
         'id'
     ];
 
+    public function isAdmin() {
+        return $this->role == 'admin';
+    }
+
     public function getLastName($withPrefix = true){
         $name = explode(" ", $this->name);
         $prefix = $this->prefix->prefix;
