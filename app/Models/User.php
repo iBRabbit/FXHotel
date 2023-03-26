@@ -29,7 +29,7 @@ class User extends Authenticatable
         'id'
     ];
 
-    public function getLastNameAttribute($withPrefix = true){
+    public function getLastName($withPrefix = true){
         $name = explode(" ", $this->name);
         $prefix = $this->prefix->prefix;
 
