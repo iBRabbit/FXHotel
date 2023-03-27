@@ -3,6 +3,7 @@
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReservationsController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,3 +51,5 @@ Route::post('/login', [LoginController::class, 'authenticate']) -> middleware('g
 Route::post('/logout', [LoginController::class, 'logout']) -> middleware('auth');
 
 Route::get('/reservations', [ReservationsController::class, 'index']) -> middleware('auth');
+
+Route::resource('/rooms', RoomController::class);
