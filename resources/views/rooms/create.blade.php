@@ -113,6 +113,14 @@
             var reader = new FileReader();
             var img = $(this).parent().parent().find('img'); // Ambil tag image
             var paragraph = $(this).parent().parent().find('p');  // Ambil tag paragraph
+
+            // cek apakah file yang diupload adalah gambar
+            if(this.files[0].type != "image/jpeg" && this.files[0].type != "image/png" && this.files[0].type != "image/jpg"){
+                alert("File must be an image.");
+                $(this).val("");
+                return;
+            }
+
             reader.onload = function(e){ // Set attribute saat reader load
                 img.attr('src', e.target.result);
                 img.attr('class', "mb-3 img-thumbnail")

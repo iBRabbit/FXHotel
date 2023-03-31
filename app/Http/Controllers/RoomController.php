@@ -45,9 +45,8 @@ class RoomController extends Controller
             'description' => 'required',
             'price' => 'required|numeric|min:1000',
             'facilities' => 'required',
-            'images' => 'required'
+            'images' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-
 
         $room = Room::create([
             'name' => $validatedData['name'],
