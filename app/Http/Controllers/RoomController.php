@@ -55,7 +55,6 @@ class RoomController extends Controller
             'facilities' => $validatedData['facilities']
         ]);
 
-        
         $validatedData['images'] = $request->file('images');
         
         foreach ($validatedData['images'] as $img) {

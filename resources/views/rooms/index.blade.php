@@ -23,11 +23,9 @@
                         <path
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                     </svg></button>
-
-
             </form>
 
-            <a href="/rooms/create" class="btn btn-success mt-2 ms-3" >
+            <a href="/rooms/create" class="btn btn-success mt-2 ms-3">
                 Add Room
             </a>
         </div>
@@ -38,16 +36,17 @@
                     <div class="col-sm-6">
                         <div class="card text-center">
                             <div class="card-body">
-                                
+
                                 @if ($room->roomImages->count())
-                                    <img src="{{ asset('storage/' . $room->roomImages->first()->image) }}" class="card-img-top" alt="..."  style="width:100%; height:60vh">
+                                    <img src="{{ asset('storage/' . $room->roomImages->first()->image) }}"
+                                        class="card-img-top" alt="{{ $room->name . " image" }}" style="width:100%; height:60vh">
                                 @else
-                                    <img src="{{ asset('images/delicacies/indonesian.jpg') }}" class="card-img-top" alt="..." style="width:100%; height:60vh">
+                                    <img src="{{ asset('images/delicacies/indonesian.jpg') }}" class="card-img-top"
+                                        alt="default picture." style="width:100%; height:60vh">
                                 @endif
 
-                                    
                                 <h4 class="card-title" style="margin-block: 4vh">{{ $room->name }}</h4>
-
+                                
                                 @if (!Auth::check() || !Auth::user()->isAdmin())
                                     <a href="#" class="btn btn-primary" style="width:7vw">View</a>
                                 @else
