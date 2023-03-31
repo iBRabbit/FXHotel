@@ -7,23 +7,35 @@
 @section('page-content')
     <div class="page-content-container mt-4" style="width:50vw">
 
+        {{-- Error Message --}}
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <div class="form-content">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="/rooms/" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-4">
                     <div class="col">
                         <label for="">
                             <h5>Enter room name</h5>
                         </label>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                            aria-describedby="basic-addon1" name="username">
+                        <input type="text" class="form-control" placeholder="Example: Suit Room" aria-label="room-name"
+                            aria-describedby="basic-addon1" name="name">
                     </div>
 
                     <div class="col">
                         <label for="">
                             <h5>Enter room description</h5>
                         </label>
-                        <textarea class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" name="description"></textarea>
+                        <textarea class="form-control" placeholder="Example: A good room" aria-label="descrption" aria-describedby="basic-addon1" name="description"></textarea>
                     </div>
                 </div>
 
@@ -32,8 +44,8 @@
                         <label for="">
                             <h5>Price/night</h5>
                         </label>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                            aria-describedby="basic-addon1" style="price">
+                        <input type="text" class="form-control" placeholder="Example: 50000" aria-label="price"
+                            aria-describedby="basic-addon1" name = "price">
                     </div>
 
                     <div class="col">
@@ -41,7 +53,7 @@
                             <label for="">
                                 <h5>Enter room facilities</h5>
                             </label>
-                            <textarea class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" name="facilities"></textarea>
+                            <textarea class="form-control" placeholder="Example: Swimming Pool, Biliard, etc." aria-label="facilities" aria-describedby="basic-addon1" name="facilities"></textarea>
                         </div>
                     </div>
                 </div>
@@ -53,18 +65,16 @@
                 </div>
                 
                 {{-- Image input container --}}
-                
                 <div class="row" id="img-input-container">
                     <div class="row">
                         
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-success mb-3">Submit</button>
-                <div class="row">
-                    <div class="col">
-                    </div>
+                <div class="row d-flex justify-content-end p-3">
+                    <button type="submit" class="btn btn-success mb-3 " style="width:20%" >Submit</button>
                 </div>
+                
 
             </form>
         </div>
@@ -77,10 +87,9 @@
        // Tambah input field untuk gambar 
         var i = 1; // iterasi untuk id img-preview
         
-        $('#add-img-btn').click(function(){
+        $('#add-img-btn').click(function(){ // Ketika tombol add image diklik
             $('#img-input-container').append(`
             <div class="row">
-                
                     <div class="input-group mb-3 ">
                         <input type="file" class="form-control" id="input-group-file" name="images[]">
                         <button type="button" class="btn btn-danger " id="delete-img-btn">X</button>
@@ -102,9 +111,9 @@
         // Image preview
         $(document).on('change', '#input-group-file', function(){
             var reader = new FileReader();
-            var img = $(this).parent().parent().find('img');
-            var paragraph = $(this).parent().parent().find('p');
-            reader.onload = function(e){
+            var img = $(this).parent().parent().find('img'); // Ambil tag image
+            var paragraph = $(this).parent().parent().find('p');  // Ambil tag paragraph
+            reader.onload = function(e){ // Set attribute saat reader load
                 img.attr('src', e.target.result);
                 img.attr('class', "mb-3 img-thumbnail")
                 img.attr('style', "width: 30vw; border-radius: 10px; margin: 0 auto; padding: 0;")
@@ -112,7 +121,7 @@
                 paragraph.attr('class', "fw-bold text-center")
             }
 
-            reader.readAsDataURL(this.files[0]);
+            reader.readAsDataURL(this.files[0]); // Image dibaca sebagai data url
         });
 
     </script>
