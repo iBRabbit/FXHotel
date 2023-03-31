@@ -2,6 +2,15 @@
 
 @section('content')
     <div class="content-container" style="position: relative;">
+
+        {{-- Success Message --}}
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <div class="search-box d-flex flex-row width">
             <h2 style="margin-top: 10vh"> <i>List of Rooms</i> </h2>
         </div>
@@ -29,8 +38,14 @@
                     <div class="col-sm-6">
                         <div class="card text-center">
                             <div class="card-body">
-                                <img src="{{ asset('images/delicacies/indonesian.jpg') }}" class="card-img-top"
-                                    alt="...">
+                                
+                                @if ($room->roomImages->count())
+                                    <img src="{{ asset('storage/' . $room->roomImages->first()->image) }}" class="card-img-top" alt="..."  style="width:100%; height:60vh">
+                                @else
+                                    <img src="{{ asset('images/delicacies/indonesian.jpg') }}" class="card-img-top" alt="..." style="width:100%; height:60vh">
+                                @endif
+
+                                    
                                 <h4 class="card-title" style="margin-block: 4vh">{{ $room->name }}</h4>
 
                                 @if (!Auth::check() || !Auth::user()->isAdmin())
