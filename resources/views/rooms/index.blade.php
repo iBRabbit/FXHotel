@@ -52,7 +52,7 @@
                                 @else
                                     <div class="admin-button d-flex flex-row justify-content-center">
                                         <a href="#" class="btn btn-primary me-3">Update</a>
-                                        <form action="#" method="post" class="">
+                                        <form action="/rooms/{{ $room->id }}" method="post" class="">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
