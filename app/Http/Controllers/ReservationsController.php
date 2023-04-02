@@ -11,4 +11,10 @@ class ReservationsController extends Controller
             'pageTitle' => 'Reservations'
         ]);
     }
+
+    public function checkout(){
+        return view('reservations/checkout', [
+            'pageTitle' => 'Checkout'
+        ]);
+    }
 }

@@ -51,5 +51,6 @@ Route::post('/login', [LoginController::class, 'authenticate']) -> middleware('g
 Route::post('/logout', [LoginController::class, 'logout']) -> middleware('auth');
 
 Route::get('/reservations', [ReservationsController::class, 'index']) -> middleware('auth');
+Route::get('/checkout', [ReservationsController::class, 'checkout']) -> middleware('auth');
 
 Route::resource('/rooms', RoomController::class);
