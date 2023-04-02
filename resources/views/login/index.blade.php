@@ -53,7 +53,7 @@
                         </div>
                         
                         <div class="mb-3 d-flex justify-content-center">
-                            <p>Already has an account? <span><a href="/register">Register!</a></span></p>
+                            <p>Don't have an account? <span><a href="/register">Register!</a></span></p>
                         </div>
                         
                     </form>
