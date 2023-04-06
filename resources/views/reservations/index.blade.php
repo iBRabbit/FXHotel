@@ -53,27 +53,6 @@
                 </div>
 
                 <div class="col">
-                    <div class="form-group">
-                        <h5>Price</h5>
-                        <input type="text" class="form-control" aria-label="Price">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col">
-                    <h5>Enter Promo Code (Optional)</h5>
-                    <input type="text" class="form-control" aria-label="promo-codes">
-                </div>
-
-                <div class="col">
-                    <h5>Additional Request</h5>
-                    <input type="text" class="form-control" aria-label="additional-req">
-                </div>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col">
                     <h5>Total Guest</h5>
                     <div class="row">
                         <div class="col col-lg-2">
@@ -100,9 +79,29 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col d-flex justify-content-end p-3">
-                    <button type="Reserve Now" class="btn btn-success mb-3" style="width:20%" >Reserve Now</button>
+            <div class="row mb-4">
+                <div class="col">
+                    <h5>Enter Promo Code (Optional)</h5>
+                    <input type="text" class="form-control" aria-label="promo-codes">
+                </div>
+
+                <div class="col">
+                    <h5>Additional Request</h5>
+                    <input type="text" class="form-control" aria-label="additional-req">
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-group">
+                        <h5>Price</h5>
+                        <input type="text" class="form-control" aria-label="Price">
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-end align-items-end">
+                    <button type="Reserve Now" class="btn btn-success mt-auto" style="width:20%" >Reserve Now</button>
                 </div>
             </div>
 
