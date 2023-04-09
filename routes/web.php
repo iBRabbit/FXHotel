@@ -50,7 +50,9 @@ Route::get('/login', [LoginController::class, 'index'])-> name('login') -> middl
 Route::post('/login', [LoginController::class, 'authenticate']) -> middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout']) -> middleware('auth');
 
-Route::get('/reservations', [ReservationsController::class, 'index']) -> middleware('auth');
 Route::get('/checkout', [ReservationsController::class, 'checkout']) -> middleware('auth');
 
+// Route::get('/reservations', [ReservationsController::class, 'index']) -> middleware('auth');
+Route::get('/reservations', [ReservationsController::class, 'index']);
+Route::post('/reservations',[ReservationsController::class, 'store']);
 Route::resource('/rooms', RoomController::class);
