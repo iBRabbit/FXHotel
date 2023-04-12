@@ -20,4 +20,10 @@ class Reservation extends Model
     public function promo(){
         return $this->belongsTo(Promo::class, "promo_id", "id");
     }
+
+    protected $guarded = [
+        'id'
+    ];
+
+    public $timestamps = false;
 }
