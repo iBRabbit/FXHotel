@@ -13,7 +13,7 @@ class ReservationsController extends Controller
     public function index(){
 
         $rooms = Room::all();
-        
+
         return view('reservations/index', [
             'pageTitle' => 'Reservations'
         ])->with('rooms',$rooms);
@@ -52,7 +52,7 @@ class ReservationsController extends Controller
             'status' => "Draft"
         ]);
 
-        
+
         return redirect('/reservations/checkout/'.$reservation->id);
     }
 
