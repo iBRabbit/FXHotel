@@ -20,11 +20,6 @@
             <div class="row mb-4">
                 <div class="col">
                     <h5>Room Type</h5>
-                    {{-- <select class="form-select" name="room_type" id="room_type" aria-label="Default select example">
-                        <option value="" hidden>Choose your room</option>
-                        <option value="1">Deluxe Room</option>
-                        <option value="2">Superior Room</option>
-                    </select> --}}
                     <select class="form-select" name="room_type" id="room_type">
                         <option value="" hidden>Choose your room</option>
                         @foreach ($rooms as $room)
@@ -60,26 +55,12 @@
                     <h5>Total Guest</h5>
                     <div class="row">
                         <div class="col-lg-4 d-flex align-items-center gap-2">
-                            {{-- <select class="form-select" name="total_adult" id="total-adult"
-                                aria-label="Default select example">
-                                <option value="" hidden>0</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select> --}}
                             <input type="number" class="form-control" name="total_adult" aria-label="total-adult">
                             <div class="">
                                 <h5>Adults</h5>
                             </div>
                         </div>
                         <div class="col-lg-4 d-flex align-items-center gap-2">
-                            {{-- <select class="form-select" name="total_child" id="total-child"
-                                aria-label="Default select example">
-                                <option value="" hidden>0</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select> --}}
                             <input type="number" class="form-control" name="total_child" aria-label="total-child">
                             <div class="">
                                 <h5>Childs<h5>

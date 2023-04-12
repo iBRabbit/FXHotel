@@ -90,7 +90,11 @@
                             <button type="Cancel" class="btn btn-danger mb-3" style="width:40%">Cancel</button>
                         </div>
                         <div class="col justify-content-around p-3">
-                            <button type="Submit" class="btn btn-success mb-3" style="width:40%">Check Out</button>
+                            <form action="/reservations/checkout/{{$reservation->id}}" method="POST">
+                                @csrf
+                                {{-- @method('put') --}}
+                                <button type="Submit" class="btn btn-success mb-3" style="width:40%">Check Out</button>
+                            </form>
                         </div>
                     </div>
                 </div>
