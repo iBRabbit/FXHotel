@@ -47,7 +47,7 @@ class ReservationsController extends Controller
             'total_room' => $request->total_rooms,
             'total_price' => $total_room,
             'additional' => $request->additional_req,
-            'promo_id' => $promo_code->id,
+            'promo_id' => @$promo_code->id,
             'user_id' => $user_id,
             'status' => "Draft"
         ]);
@@ -65,8 +65,7 @@ class ReservationsController extends Controller
     }
 
     public function storeCheckout(Reservation $reservation){
-        dd($reservation);
-        Reservation::findOrFail($reservation->id)->update([
+        $reservation->update([
             'status' => "Paid",
         ]);
         return redirect('/reservations');

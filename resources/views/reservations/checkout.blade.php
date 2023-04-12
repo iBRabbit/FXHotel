@@ -15,7 +15,8 @@
 @section('page-content')
     <h3><i> Detail Reservation </i></h3>
     <div class="mt-5 mb-5">
-        <form action="/reservations/checkout/{{ $reservation->id }}" method="PUT" enctype="multipart/form-data">
+        <form action="/reservations/checkout/{{ $reservation->id }}" method="POST" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="row mb-4">
                 <div class="col">
@@ -59,7 +60,7 @@
                     <h5>Promo Code (Optional)</h5>
                 </div>
                 <div class="col">
-                    <h5>{{ $reservation->promo->promo_code }}</h5>
+                    <h5>{{ $reservation->promo->promo_code ?? "-" }}</h5>
                 </div>
             </div>
 
