@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\RoomImage;
+
+use Illuminate\Support\Facades\Storage;
 
 class RoomController extends Controller
 {
@@ -39,7 +42,32 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|unique:rooms',
+            'description' => 'required',
+            'price' => 'required|numeric|min:1000',
+            'facilities' => 'required',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg|max:10240',
+        ]);
+
+        $room = Room::create([
+            'name' => $validatedData['name'],
+            'description' => $validatedData['description'],
+            'price' => $validatedData['price'],
+            'facilities' => $validatedData['facilities']
+        ]);
+
+        $validatedData['images'] = $request->file('images');
+        
+        foreach ($validatedData['images'] as $img) {
+            $img = $img->store('room-images', 'public');
+            RoomImage::create([
+                'room_id' => $room->id,
+                'image' => $img
+            ]);
+        }
+
+        return redirect('/rooms')->with('success', 'Room created successfully.');
     }
 
     /**
@@ -79,11 +107,21 @@ class RoomController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Room $room)
     {
-        //
+        $this->authorize('admin');
+
+        if($room->roomImages()->count()) {
+            foreach ($room->roomImages as $img) {
+                Storage::disk('public')->delete($img->image);
+                $img->delete();
+            }
+        }
+        
+        Room::destroy($room->id);
+        return redirect('/rooms')->with('success', 'Room deleted successfully.');
     }
 }

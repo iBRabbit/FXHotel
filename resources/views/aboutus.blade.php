@@ -38,7 +38,7 @@
         font-weight: bold;
     }
     
-    p {
+    #home_container > p {
         font-size: 20pt; 
         text-align:center
     }
@@ -55,7 +55,7 @@
                     <h1 class="text-center text-white" style="text-shadow: 2px 2px #636363; ">Hospitality is our passion.</h1>
                 </div>
         </div>
-        <br>
+        <br> 
         <p style=""><i>Fx Lalala Hotels group is a fine hotelier that is very passionate to give every customer the hotel experience of their dreams. Established in 1876, our experience to serve customers from different backgrounds and ages is our strength.</i>
         </p>
         <br>

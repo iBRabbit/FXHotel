@@ -9,7 +9,10 @@ class Room extends Model
 {
     use HasFactory;
     
-    public function roomImage(){
+    public $timestamps = false;
+    protected $guarded = ["id"];
+
+    public function roomImages(){
         return $this->hasMany(RoomImage::class, "room_id", "id");
     }
 
