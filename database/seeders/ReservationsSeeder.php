@@ -27,7 +27,8 @@ class ReservationsSeeder extends Seeder
                 'total_children' => 0,
                 'total_room' => 1,
                 'total_price' => 1000000,
-                'additional' => 'Fresh linen please'
+                'additional' => 'Fresh linen please',
+                'status' => "Paid"
             ],
             [
                 'user_id' => 5,
@@ -39,7 +40,8 @@ class ReservationsSeeder extends Seeder
                 'total_children' => 1,
                 'total_room' => 2,
                 'total_price' => 3000000,
-                'additional' => 'Hairdryer needed'
+                'additional' => 'Hairdryer needed',
+                'status' => "Paid"
             ],
             [
                 'user_id' => 2,
@@ -51,7 +53,8 @@ class ReservationsSeeder extends Seeder
                 'total_children' => 1,
                 'total_room' => 2,
                 'total_price' => 20000000,
-                'additional' => 'Early check in'
+                'additional' => 'Early check in',
+                'status' => "Paid"
             ]
         ]);
     }

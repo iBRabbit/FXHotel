@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('total_room');
             $table->integer('total_price');
             $table->string('additional');
+            $table->string('status');
         });
     }
 
