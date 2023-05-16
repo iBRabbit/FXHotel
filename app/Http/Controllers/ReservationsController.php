@@ -71,4 +71,9 @@ class ReservationsController extends Controller
         return redirect('/reservations');
     }
 
+    public function cancelCheckout($reservations_id){
+        $reservations = Reservation::findOrFail($reservations_id)->delete();
+        return redirect('/home');
+    }
+
 }

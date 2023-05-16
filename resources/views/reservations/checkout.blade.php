@@ -80,6 +80,7 @@
                 <div class="col">
                     <h5>{{ $reservation->total_price }}</h5>
                 </div>
+            </div>
 
             <div class="row mb-4 mt-5 d-flex">
                 <div class="col mr-auto p-3">
@@ -88,12 +89,16 @@
                 <div class="col">
                     <div class="row justify-content-end p-3">
                         <div class="col justify-content-around p-3">
-                            <button type="Cancel" class="btn btn-danger mb-3" style="width:40%">Cancel</button>
+                            <form action="/reservations/checkout/{{$reservation->id}}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="Cancel" class="btn btn-danger mb-3" style="width:40%">Cancel</button>
+                            </form>
                         </div>
                         <div class="col justify-content-around p-3">
                             <form action="/reservations/checkout/{{$reservation->id}}" method="POST">
                                 @csrf
-                                {{-- @method('put') --}}
+                                @method('put')
                                 <button type="Submit" class="btn btn-success mb-3" style="width:40%">Check Out</button>
                             </form>
                         </div>
