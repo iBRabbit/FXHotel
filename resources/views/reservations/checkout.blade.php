@@ -78,13 +78,15 @@
                     <h5>Total Price</h5>
                 </div>
                 <div class="col">
-                    <h5>{{ $reservation->total_price }}</h5>
+                    <h5>Rp. {{number_format($reservation->total_price, 0, ',', '.')}}</h5>
                 </div>
             </div>
 
             <div class="row mb-4 mt-5 d-flex">
                 <div class="col mr-auto p-3">
-                    <button type="Back" class="btn btn-primary mb-3" style="width:20%">Back</button>
+                    <form action="" method="GET">
+                        <button type="Back" class="btn btn-primary mb-3" style="width:20%">Back</button>
+                    </form>
                 </div>
                 <div class="col">
                     <div class="row justify-content-end p-3">

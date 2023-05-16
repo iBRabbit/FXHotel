@@ -58,5 +58,6 @@ Route::post('/reservations',[ReservationsController::class, 'store']) -> middlew
 Route::get('/reservations/checkout/{reservation}',[ReservationsController::class, 'checkout']) -> middleware('auth');
 Route::put('/reservations/checkout/{reservation}',[ReservationsController::class, 'storeCheckout']) -> middleware('auth');
 Route::delete('/reservations/checkout/{reservation}', [ReservationsController::class, 'cancelCheckout'] ) -> middleware('auth');
+Route::get('/reservations/checkout/{reservation}', [ReservationsController::class, 'updateCheckout'] ) -> middleware('auth');
 
 Route::resource('/rooms', RoomController::class);
