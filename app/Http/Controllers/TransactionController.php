@@ -12,7 +12,8 @@ class TransactionController extends Controller
     public function index() {
         return view('transactions.index',[
             "pageTitle" => "Transactions",
-            "transactions" => Transaction::where('user_id', Auth::user()->id)->get()
+            "transactions" => Transaction::where()
+            ('user_id', Auth::user()->id)->get()
         ]);
     }
 }

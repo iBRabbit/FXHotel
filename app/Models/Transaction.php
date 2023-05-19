@@ -9,8 +9,8 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    public function reservation(){
-        return $this->belongsTo(Reservations::class, "reservation_id", "id");
+    public function user(){
+        return $this->belongsTo(User::class, "user_id", "id");
     }
 
 }

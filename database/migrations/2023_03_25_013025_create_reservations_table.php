@@ -27,7 +27,7 @@ return new class extends Migration
             $table->integer('total_children');
             $table->integer('total_room');
             $table->integer('total_price');
-            $table->string('additional');
+            $table->string('additional')->nullable();
             $table->string('status');
         });
     }

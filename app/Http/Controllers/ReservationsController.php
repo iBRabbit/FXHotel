@@ -23,14 +23,14 @@ class ReservationsController extends Controller
 
         $request->validate([
             'room_type' => 'required',
-            'total_rooms' => 'required|integer',
-            'from' => 'required|date',
+            'total_rooms' => 'required|integer|min:1|max:100',
+            'from' => 'required|date|before:to',
             'to' => 'required|date',
-            'price' => 'required',
+            'price' => 'required|integer',
             'promo_codes' => 'nullable|exists:promos,promo_code',
             'additional_req' => 'nullable',
-            'total_adult' => 'nullable',
-            'total_child' => 'nullable'
+            'total_adult' => 'nullable|integer|min:1|max:100',
+            'total_child' => 'nullable|integer|min:1|max:100'
         ]);
 
         $promo_code = Promo::where('promo_code', $request->promo_codes)->first();
