@@ -21,6 +21,10 @@ class Reservation extends Model
         return $this->belongsTo(Promo::class, "promo_id", "id");
     }
 
+    public function transaction(){
+        return $this->belongsTo(Transaction::class, "transaction_id", "id");
+    }
+
     protected $guarded = [
         'id'
     ];
