@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="transaction-container">
+        <h1 class="text-center mt-3 mb-3">Transactions</h1>
         <table class="table">
             <thead>
                 <tr>
@@ -21,11 +22,10 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $tr->uuid }}</td>
                     <td>{{ $tr->created_at }}</td>
-                    <td>{{ $tr->reservation->user->id }}</td>
-                    <td>{{ $tr->reservation->total_room }}</td>
-                    <td>{{ $tr->reservation->total_adult }}</td>
-                    <td>{{ $tr->reservation->total_children }}</td>
-                    <td>{{ $tr->reservation->total_price }}</td>
+                    <td>{{ $tr->total_room }}</td>
+                    <td>{{ $tr->total_adult }}</td>
+                    <td>{{ $tr->total_children }}</td>
+                    <td>{{ $tr->total_price }}</td>
                 </tr>
                 @endforeach
             </tbody>

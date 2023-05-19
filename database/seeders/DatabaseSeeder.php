@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Transaction;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PrefixSeeder::class);
         $this->call(PromoSeeder::class);
         $this->call(RoomSeeder::class);
-        \App\Models\User::factory(10)->create();
+        User::factory(10)->create();
         $this->call(ReservationsSeeder::class);
 
         User::create([
@@ -48,5 +49,6 @@ class DatabaseSeeder extends Seeder
             'phone' => '081234567890',
             'postal' => '12345',
         ]);
+
     }
 }

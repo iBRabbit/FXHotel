@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Promo;
 use App\Models\Reservation;
 use App\Models\Room;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Uuid;
 
 class ReservationsController extends Controller
 {
@@ -66,9 +68,17 @@ class ReservationsController extends Controller
 
     public function storeCheckout(Reservation $reservation){
         $reservation->update([
-            'status' => "Paid",
+            'status' => "Paid"
         ]);
-        return redirect('/reservations');
+        Transaction::create([
+            'uuid' => Uuid::uuid4()->toString(),
+            'user_id' => $reservation->user_id,
+            'total_room' => $reservation->total_room,
+            'total_adult' => $reservation->total_adult,
+            'total_children' => $reservation->total_children,
+            'total_price' => $reservation->total_price,
+        ]);
+        return redirect('/transactions');
     }
 
 }

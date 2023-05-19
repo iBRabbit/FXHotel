@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid') -> unique();
             $table->foreignId('user_id') -> references('id') -> on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('total_room');
+            $table->integer('total_adult');
+            $table->integer('total_children');
+            $table->integer('total_price');
             $table->timestamps();
         });
     }
