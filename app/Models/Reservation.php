@@ -22,7 +22,7 @@ class Reservation extends Model
     }
 
     public function transaction(){
-        return $this->belongsTo(Transaction::class, "transaction_id", "id");
+        return $this->hasOne(Transaction::class, "reservation_id", "id");
     }
 
     protected $guarded = [
