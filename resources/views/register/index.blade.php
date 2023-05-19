@@ -92,7 +92,7 @@
     
                 <div class="row">
                     <div class="col d-flex justify-content-center mt-3">
-                        <p>Already has an account? <span> <a href="/login">Register Now</a></span></p>
+                        <p>Already has an account? <span> <a href="/login">Login</a></span></p>
                     </div>
                 </div>
             </div>
