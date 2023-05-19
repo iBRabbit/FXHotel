@@ -34,7 +34,7 @@ class ReservationsController extends Controller
         ]);
 
         $promo_code = Promo::where('promo_code', $request->promo_codes)->first();
-        $total_room = $request->price * $request->total_rooms;
+        $total_price = $request->price * $request->total_rooms;
         $user_id = Auth::id();
 
 
@@ -45,7 +45,7 @@ class ReservationsController extends Controller
             'total_adult' => $request->total_adult,
             'total_children' => $request->total_child,
             'total_room' => $request->total_rooms,
-            'total_price' => $total_room,
+            'total_price' => $total_price,
             'additional' => $request->additional_req,
             'promo_id' => @$promo_code->id,
             'user_id' => $user_id,

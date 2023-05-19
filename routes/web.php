@@ -4,6 +4,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\TransactionController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,5 +59,8 @@ Route::post('/reservations',[ReservationsController::class, 'store']) -> middlew
 
 Route::get('/reservations/checkout/{reservation}',[ReservationsController::class, 'checkout']) -> middleware('auth');
 Route::put('/reservations/checkout/{reservation}',[ReservationsController::class, 'storeCheckout']) -> middleware('auth');
+
+
+Route::get('/transactions', [TransactionController::class, 'index']) -> middleware('auth');
 
 Route::resource('/rooms', RoomController::class);
