@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Promo;
 use App\Models\Reservation;
 use App\Models\Room;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Uuid;
 
 class ReservationsController extends Controller
 {
@@ -23,18 +25,18 @@ class ReservationsController extends Controller
 
         $request->validate([
             'room_type' => 'required',
-            'total_rooms' => 'required|integer',
-            'from' => 'required|date',
+            'total_rooms' => 'required|integer|min:1|max:100',
+            'from' => 'required|date|before:to',
             'to' => 'required|date',
-            'price' => 'required',
+            'price' => 'required|integer',
             'promo_codes' => 'nullable|exists:promos,promo_code',
             'additional_req' => 'nullable',
-            'total_adult' => 'nullable',
-            'total_child' => 'nullable'
+            'total_adult' => 'nullable|integer|min:1|max:100',
+            'total_child' => 'nullable|integer|min:1|max:100'
         ]);
 
         $promo_code = Promo::where('promo_code', $request->promo_codes)->first();
-        $total_room = $request->price * $request->total_rooms;
+        $total_price = $request->price * $request->total_rooms;
         $user_id = Auth::id();
 
 
@@ -45,7 +47,7 @@ class ReservationsController extends Controller
             'total_adult' => $request->total_adult,
             'total_children' => $request->total_child,
             'total_room' => $request->total_rooms,
-            'total_price' => $total_room,
+            'total_price' => $total_price,
             'additional' => $request->additional_req,
             'promo_id' => @$promo_code->id,
             'user_id' => $user_id,
@@ -66,9 +68,17 @@ class ReservationsController extends Controller
 
     public function storeCheckout(Reservation $reservation){
         $reservation->update([
-            'status' => "Paid",
+            'status' => "Paid"
         ]);
-        return redirect('/reservations');
+        Transaction::create([
+            'uuid' => Uuid::uuid4()->toString(),
+            'user_id' => $reservation->user_id,
+            'total_room' => $reservation->total_room,
+            'total_adult' => $reservation->total_adult,
+            'total_children' => $reservation->total_children,
+            'total_price' => $reservation->total_price,
+        ]);
+        return redirect('/transactions');
     }
 
 }

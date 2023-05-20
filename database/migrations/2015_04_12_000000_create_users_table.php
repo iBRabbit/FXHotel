@@ -25,11 +25,8 @@ return new class extends Migration
             $table->string('postal');
             $table->string('password');
             $table->string('role');
-            $table->timestamp('updated_at');
-            $table->timestamp('created_at')->nullable()->default(null);
-
-            // $table->rememberToken();
-            // $table->timestamps();
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

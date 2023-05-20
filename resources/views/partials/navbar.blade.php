@@ -37,6 +37,9 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
+                                <a class="dropdown-item" href="/transactions">My Transactions</a>
+                            </li>
+                            <li>
                                 <form action="/logout" method="post">
                                     @csrf
                                     <button type="submit" class="dropdown-item">Logout</button>
