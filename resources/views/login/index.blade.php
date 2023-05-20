@@ -43,11 +43,18 @@
                             <input type="email" class="form-control" id="email" name="email">
                         </div>
 
-                        <div class="mb-5">
+                        <div class="mb-3">
                             <label for="password" class="form-label"><h5>Password</h5></label>
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
-
+                        
+                        <div class="form-check mb-5">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name = "remember">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Remember Me
+                            </label>
+                        </div>
+                        
                         <div class="mb-3 d-flex justify-content-center" >
                             <button type="submit" class="btn btn-primary" style="width:30%">Login</button>
                         </div>
