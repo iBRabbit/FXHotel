@@ -58,6 +58,26 @@
                         </div>
                     </div>
                 </div>
+                
+                {{-- Show room images and give option to delete --}}
+                <div class="row mb-4">
+                    <div class="col">
+                        <label for="">
+                            <h5>Room Images</h5>
+                        </label>
+                        <div class="row">
+                            @foreach ($room->roomImages as $image)
+                                <div class="col">
+                                    <img src="{{ asset('storage/' . $image->image) }}" alt="" class="img-thumbnail" style="width: 30vw; border-radius: 10px; margin: 0 auto; padding: 0;">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="/rooms/{{ $room->id }}/delete-image/{{ $image->id }}" class="btn btn-danger mt-2">Delete</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="row">
                     <div class="col">

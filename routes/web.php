@@ -64,3 +64,5 @@ Route::put('/reservations/checkout/{reservation}',[ReservationsController::class
 Route::get('/transactions', [TransactionController::class, 'index']) -> middleware('auth');
 
 Route::resource('/rooms', RoomController::class);
+
+Route::get('/rooms/{room}/delete-image/{image}', [RoomController::class, 'deleteImage']) -> middleware('auth');

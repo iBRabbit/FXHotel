@@ -110,12 +110,36 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        $room->update([
-            'name' => $request->name,
-            'price' => $request->price,
-            'description' => $request->description,
-            'facilities' => $request->facilities,
+        
+        $validatedData = $request->validate([
+            'name' => 'required|unique:rooms,name,'.$room->id,
+            'description' => 'required',
+            'price' => 'required|numeric|min:1000',
+            'facilities' => 'required',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ]);
+
+        $room->update([
+            'name' => $validatedData['name'],
+            'description' => $validatedData['description'],
+            'price' => $validatedData['price'],
+            'facilities' => $validatedData['facilities']
+        ]);
+
+        if($request->file('images')) {
+            $validatedData['images'] = $request->file('images');
+            
+            foreach ($validatedData['images'] as $img) {
+                $img = $img->store('room-images', 'public');
+                RoomImage::create([
+                    'room_id' => $room->id,
+                    'image' => $img
+                ]);
+            }
+        }
+
+        
+
         return redirect('/rooms')->with('success', 'Room updated successfully.');
     }
 
@@ -138,5 +162,14 @@ class RoomController extends Controller
         
         Room::destroy($room->id);
         return redirect('/rooms')->with('success', 'Room deleted successfully.');
+    }
+
+    public function deleteImage(Room $room, RoomImage $image)
+    {
+        $this->authorize('admin');
+
+        Storage::disk('public')->delete($image->image);
+        $image->delete();
+        return redirect()->back()->with('success', 'Image deleted successfully.');
     }
 }
