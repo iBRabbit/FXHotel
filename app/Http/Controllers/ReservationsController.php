@@ -13,12 +13,30 @@ use Ramsey\Uuid\Uuid;
 
 class ReservationsController extends Controller
 {
+
+    public function computePrice(Room $room, $total_rooms, $from, $to, Promo $promo = null){
+        $start_time = new DateTime($from);
+        $end_time = new DateTime($to);
+        $time = date_diff($start_time,$end_time);
+
+        $price = ($room->price * $total_rooms * $time->format("%a"));
+        $total_price = $price - ($price * ($promo ? $promo->discount_percentage : 0) / 100);
+        return $total_price;
+    }
+
     public function index(){
 
         $rooms = Room::all();
+        
+        $oldReservation = Reservation::where('user_id', Auth::user()->id)
+                                ->where('status',  'Draft')    
+                                ->first();
+        $isUserHasReservation = $oldReservation != null;
 
         return view('reservations/index', [
-            'pageTitle' => 'Reservations'
+            'pageTitle' => 'Reservations',
+            'isUserHasReservation' => $isUserHasReservation,
+            'oldReservation' => $oldReservation
         ])->with('rooms',$rooms);
     }
 
@@ -35,14 +53,12 @@ class ReservationsController extends Controller
             'total_adult' => 'nullable|integer|min:1|max:100',
             'total_child' => 'nullable|integer|min:1|max:100'
         ]);
-        $start_time = new DateTime($request->from);
-        $end_time = new DateTime($request->to);
-        $time = date_diff($start_time,$end_time);
+        
+        $promo = Promo::where('promo_code', $request->promo_codes)->first();
 
-        $promo_code = Promo::where('promo_code', $request->promo_codes)->first();
-        $total_price = $request->price * $request->total_rooms * $time->format("%a");
+        $total_price = $this->computePrice(Room::find($request->room_type), $request->total_rooms, $request->from, $request->to, $promo);
+
         $user_id = Auth::id();
-
 
         $reservation = Reservation::create([
             'room_id' => $request->room_type,
@@ -52,8 +68,8 @@ class ReservationsController extends Controller
             'total_children' => $request->total_child,
             'total_room' => $request->total_rooms,
             'total_price' => $total_price,
-            'additional' => $request->additional_req,
-            'promo_id' => @$promo_code->id,
+            'additional' => $request->additional,
+            'promo_id' => $promo ? $promo->id : null,
             'user_id' => $user_id,
             'status' => "Draft"
         ]);
@@ -83,6 +99,32 @@ class ReservationsController extends Controller
             'total_price' => $reservation->total_price,
         ]);
         return redirect('/transactions');
+    }
+
+    public function update($reservation) {
+
+        $request = request();
+    
+        $reservation = Reservation::find($reservation);
+        
+        $promo = Promo::where('promo_code', $request->promo_codes)->first();
+        
+        $total_price = $this->computePrice(Room::find($request->room_type), $request->total_rooms, $request->from, $request->to, $promo);
+
+        $reservation->update([
+            'room_id' => $request->room_type,
+            'from' => $request->from,
+            'to' => $request->to,
+            'total_adult' => $request->total_adult,
+            'total_room' => $request->total_rooms,
+            'total_children' => $request->total_child,
+            'total_price' => $total_price,
+            'additional' => $request->additional,
+            'promo_id' => $request->promo_id,
+            'status' => "Draft"
+        ]);
+
+        return redirect('/reservations/checkout/'.$reservation->id)->with('success','Reservation updated successfully');
     }
 
 }

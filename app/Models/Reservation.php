@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DateTime;
 
 class Reservation extends Model
 {
@@ -20,6 +21,8 @@ class Reservation extends Model
     public function promo(){
         return $this->belongsTo(Promo::class, "promo_id", "id");
     }
+
+
 
     protected $guarded = [
         'id'
