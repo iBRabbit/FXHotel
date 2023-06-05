@@ -50,14 +50,14 @@
                                 <h4 class="card-title" style="margin-block: 4vh">{{ $room->name }}</h4>
 
                                 @if (!Auth::check() || !Auth::user()->isAdmin())
-                                    <a href="#" class="btn btn-primary" style="width:7vw">View</a>
+                                    <a href="/rooms/{{ $room->id }}" class="btn btn-primary" style="width:7vw">View</a>
                                 @else
                                     <div class="admin-button d-flex flex-row justify-content-center">
-                                        <form action="/rooms/{{ $room->id }}" method="post">
-                                            @csrf
-                                            @method('put')
-                                            <button type="submit" class="btn btn-primary me-3">Update</button>
-                                        </form>
+
+                                        <a href="/rooms/{{ $room->id }}/edit" class="btn btn-primary me-3">
+                                            Update
+                                        </a>
+                                        
                                         <form action="/rooms/{{ $room->id }}" method="post" class="">
                                             @csrf
                                             @method('DELETE')

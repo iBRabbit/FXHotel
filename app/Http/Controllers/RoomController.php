@@ -81,7 +81,10 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
+        return view('rooms/show', [
+            'pageTitle' => 'Show',
+            'room' => $room
+        ]);
     }
 
     /**
@@ -92,7 +95,10 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        
+        return view('rooms/edit', [
+            'pageTitle' => 'Edit',
+            'room' => $room
+        ]);
     }
 
     /**
@@ -104,7 +110,13 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        $room->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'facilities' => $request->facilities,
+        ]);
+        return redirect('/rooms')->with('success', 'Room updated successfully.');
     }
 
     /**

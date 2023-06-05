@@ -1,9 +1,5 @@
 @extends('layouts.with_header')
 
-@section('header')
-    Edit Room
-@endsection
-
 @section('page-content')
     <div class="page-content-container mt-4" style="width:50vw">
 
@@ -20,10 +16,17 @@
         @endif
 
         <div class="form-content">
+            @if ($room->roomImages->count())
+                <img src="{{ asset('storage/' . $room->roomImages->first()->image) }}"
+                class="card-img-top" alt="{{ $room->name . " image" }}" style="width:100%; height:60vh">
+            @else
+                <img src="{{ asset('images/delicacies/indonesian.jpg') }}" class="card-img-top"
+                alt="default picture." style="width:100%; height:60vh">
+            @endif
             <form action="/rooms/{{ $room->id }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
-                <div class="row mb-4">
+                <div class="row mt-4">
                     <div class="col">
                         <label for="">
                             <h5>Enter room name</h5>
