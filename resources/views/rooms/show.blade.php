@@ -15,19 +15,16 @@
             </div>
         @endif
 
-        <div class="room_image  d-flex justify-content-center">
+        <div class="room_image d-flex justify-content-center">
             @if ($room->roomImages->count())
-                {{-- <div id="carouselExample" class="carousel slide">
+                <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="..." class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="..." class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="..." class="d-block w-100" alt="...">
-                            </div>
+                            @foreach ($room->roomImages as $key=>$img)
+                                <div class="carousel-item {{ ($key == 0) ? 'active' : '' }}">
+                                    <img src="{{ asset('storage/' . $img->image) }}" class="card-img-top"
+                                    alt="{{ $room->name . ' image' }}" style="width:100%; height:60vh">
+                                </div>
+                            @endforeach
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -37,21 +34,11 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
-                    </div> --}}
-                <img src="{{ asset('storage/' . $room->roomImages->first()->image) }}" class="card-img-top"
-                    alt="{{ $room->name . ' image' }}" style="width:100%; height:60vh">
+                    </div>
             @else
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('images/delicacies/indonesian.jpg') }}" class="card-img-top"
-                                alt="default picture." style="width:100%; height:60vh">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('images/delicacies/indonesian.jpg') }}" class="card-img-top"
-                                alt="default picture." style="width:100%; height:60vh">
-                        </div>
-                        <div class="carousel-item">
                             <img src="{{ asset('images/delicacies/indonesian.jpg') }}" class="card-img-top"
                                 alt="default picture." style="width:100%; height:60vh">
                         </div>
@@ -94,6 +81,7 @@
                 </div>
             </form>
         </div>
+    </div>
 
         {{-- JQuery --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
