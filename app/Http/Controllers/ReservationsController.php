@@ -16,9 +16,16 @@ class ReservationsController extends Controller
     public function index(){
 
         $rooms = Room::all();
+        
+        $oldReservation = Reservation::where('user_id', Auth::user()->id)
+                                ->where('status',  'Draft')    
+                                ->first();
+        $isUserHasReservation = $oldReservation != null;
 
         return view('reservations/index', [
-            'pageTitle' => 'Reservations'
+            'pageTitle' => 'Reservations',
+            'isUserHasReservation' => $isUserHasReservation,
+            'oldReservation' => $oldReservation
         ])->with('rooms',$rooms);
     }
 
@@ -43,7 +50,6 @@ class ReservationsController extends Controller
         $total_price = $request->price * $request->total_rooms * $time->format("%a");
         $user_id = Auth::id();
 
-
         $reservation = Reservation::create([
             'room_id' => $request->room_type,
             'from' => $request->from,
@@ -52,7 +58,7 @@ class ReservationsController extends Controller
             'total_children' => $request->total_child,
             'total_room' => $request->total_rooms,
             'total_price' => $total_price,
-            'additional' => $request->additional_req,
+            'additional' => $request->additional,
             'promo_id' => @$promo_code->id,
             'user_id' => $user_id,
             'status' => "Draft"
@@ -83,6 +89,32 @@ class ReservationsController extends Controller
             'total_price' => $reservation->total_price,
         ]);
         return redirect('/transactions');
+    }
+
+    public function update($reservation) {
+
+        $request = request();
+    
+        $reservation = Reservation::find($reservation);
+
+        $time = date_diff(new DateTime($request->from),new DateTime($request->to));
+
+        $total_price = $request->price * $request->total_rooms * $time->format("%a");
+
+        $reservation->update([
+            'room_id' => $request->room_type,
+            'from' => $request->from,
+            'to' => $request->to,
+            'total_adult' => $request->total_adult,
+            'total_room' => $request->total_rooms,
+            'total_children' => $request->total_child,
+            'total_price' => $total_price,
+            'additional' => $request->additional,
+            'promo_id' => $request->promo_id,
+            'status' => "Draft"
+        ]);
+
+        return redirect('/reservations/checkout/'.$reservation->id)->with('success','Reservation updated successfully');
     }
 
 }

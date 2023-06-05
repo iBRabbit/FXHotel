@@ -1,3 +1,8 @@
+@php
+    use App\Models\Reservation;
+    $isUserHasReservation = Auth::check() ? Reservation::where('user_id', Auth::user()->id)->where('status', 'pending')->first() : null;
+@endphp
+
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
 
@@ -15,7 +20,15 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item button ps-2 pe-2">
-                    <a class="nav-link btn btn-primary" href="/reservations" style="color:white; width:10vw">Reserve Now</a>
+                    <a class="nav-link btn btn-primary" style="color:white; width:10vw"
+                    href= 
+                    {{ 
+                        $isUserHasReservation ? 
+                        "/reservations/checkout/" . $isUserHasReservation->id : 
+                        "/reservations"
+                    }}
+                    
+                    >Reserve Now</a>
                 </li>
 
                 <li class="nav-item ps-2 pe-2">

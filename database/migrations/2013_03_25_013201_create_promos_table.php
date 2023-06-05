@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('promos', function (Blueprint $table) {
             $table->id();
             $table->string('promo_code');
+            $table->integer('discount_percentage')->default(0);
         });
     }
 
