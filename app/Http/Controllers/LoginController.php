@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+
+define('COOKIE_TIME', 60 * 60 * 24 * 30);
 
 class LoginController extends Controller
 {
@@ -19,6 +22,16 @@ class LoginController extends Controller
         ]);
 
         $remember = $request->has('remember') ? true : false;
+
+        if($remember) {
+            Cookie::queue('is_remember', true, COOKIE_TIME);
+            Cookie::queue('email', $request->email, COOKIE_TIME);
+            Cookie::queue('password', $request->password, COOKIE_TIME);
+        } else {
+            Cookie::queue(Cookie::forget('is_remember'));
+            Cookie::queue(Cookie::forget('email'));
+            Cookie::queue(Cookie::forget('password'));
+        }
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();

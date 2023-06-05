@@ -17,7 +17,7 @@
 
         <div class="option-box d-flex flex-row">
             <form class="d-flex mt-2" role="search" style="width:25vw">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value="{{ request('search') ? request('search') : ""}}">
                 <button class="btn btn-outline-success" type="submit"><svg xmlns="http://www.w3.org/2000/svg"
                         width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path
@@ -25,9 +25,11 @@
                     </svg></button>
             </form>
 
-            <a href="/rooms/create" class="btn btn-success mt-2 ms-3">
-                Add Room
-            </a>
+            @can('admin')
+                <a href="/rooms/create" class="btn btn-success mt-2 ms-3">
+                    Add Room
+                </a>
+            @endcan
         </div>
 
         @foreach ($rooms->chunk(2) as $chunk)
@@ -36,22 +38,24 @@
                     <div class="col-sm-6">
                         <div class="card text-center">
                             <div class="card-body">
-
                                 @if ($room->roomImages->count())
                                     <img src="{{ asset('storage/' . $room->roomImages->first()->image) }}"
-                                        class="card-img-top" alt="{{ $room->name . " image" }}" style="width:100%; height:60vh">
+                                        class="card-img-top" alt="{{ $room->name . ' image' }}"
+                                        style="width:100%; height:60vh">
                                 @else
                                     <img src="{{ asset('images/delicacies/indonesian.jpg') }}" class="card-img-top"
                                         alt="default picture." style="width:100%; height:60vh">
                                 @endif
 
                                 <h4 class="card-title" style="margin-block: 4vh">{{ $room->name }}</h4>
-                                
+
                                 @if (!Auth::check() || !Auth::user()->isAdmin())
-                                    <a href="#" class="btn btn-primary" style="width:7vw">View</a>
+                                    <a href="/rooms/{{ $room->id }}" class="btn btn-primary" style="width:7vw">View</a>
                                 @else
                                     <div class="admin-button d-flex flex-row justify-content-center">
-                                        <a href="#" class="btn btn-primary me-3">Update</a>
+
+                                        <a href="/rooms/{{ $room->id }}/edit" class="btn btn-primary me-3">Update</a>
+                                        
                                         <form action="/rooms/{{ $room->id }}" method="post" class="">
                                             @csrf
                                             @method('DELETE')
@@ -65,5 +69,7 @@
                 @endforeach
             </div>
         @endforeach
+
+
     </div>
 @endsection

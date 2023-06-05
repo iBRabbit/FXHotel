@@ -15,17 +15,6 @@
 @section('page-content')
     <div class="login-container-box">
 
-        {{-- Error Message --}}
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
         {{-- Success Message --}}
         @if (session('success'))
             <div class="alert alert-success">
@@ -40,17 +29,17 @@
                         @csrf
                         <div class="mb-3">
                             <label for="email" class="form-label"><h5>Email Address</h5></label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <input type="email" class="form-control" id="email" name="email" value="{{ Cookie::get('is_remember') ? Cookie::get('email') : '' }}">
                         </div>
 
                         <div class="mb-3">
                             <label for="password" class="form-label"><h5>Password</h5></label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <input type="password" class="form-control" id="password" name="password" value="{{ Cookie::get('is_remember') ? Cookie::get('password') : '' }}">
                         </div>
                         
                         <div class="form-check mb-5">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name = "remember">
-                            <label class="form-check-label" for="flexCheckChecked">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name = "remember" {{ Cookie::get('is_remember') ? "checked" : ""}}>
+                            <label class="form-check-label" for="flexCheckChecked" >
                                 Remember Me
                             </label>
                         </div>
