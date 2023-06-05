@@ -50,9 +50,10 @@
                                 <h4 class="card-title" style="margin-block: 4vh">{{ $room->name }}</h4>
 
                                 @if (!Auth::check() || !Auth::user()->isAdmin())
-                                    <a href="/rooms/{{ $room->id }}" class="btn btn-primary" style="width:7vw">View</a>
+                                    <a href="/rooms/{{ $room->id }}" class="btn btn-primary me-3" style="width:7vw">View</a>
                                 @else
                                     <div class="admin-button d-flex flex-row justify-content-center">
+                                        <a href="/rooms/{{ $room->id }}" class="btn btn-warning me-3">View</a>
 
                                         <a href="/rooms/{{ $room->id }}/edit" class="btn btn-primary me-3">Update</a>
                                         
