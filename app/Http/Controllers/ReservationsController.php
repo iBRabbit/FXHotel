@@ -7,6 +7,8 @@ use App\Models\Reservation;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DateTime;
+
 
 class ReservationsController extends Controller
 {
@@ -33,6 +35,10 @@ class ReservationsController extends Controller
             'total_child' => 'nullable'
         ]);
 
+        $start_time = new DateTime($request->from);
+        $end_time = new DateTime($request->to);
+        $time = date_diff($start_time,$end_time);
+
         $promo_code = Promo::where('promo_code', $request->promo_codes)->first();
         $total_room = ($request->price * $request->total_rooms);
         // $price_room = floatval($request->price);
@@ -42,7 +48,6 @@ class ReservationsController extends Controller
         // $total_price = ($price_room * $total_room_price) * ($to_date - $from_date);
         $total_price = ($request->price * $request->total_rooms);
         $user_id = Auth::id();
-
 
         $reservation = Reservation::create([
             'room_id' => $request->room_type,
@@ -113,6 +118,14 @@ class ReservationsController extends Controller
             'promo_id' => @$promo_code->id,
             'user_id' => $user_id,
             'status' => "Draft"
+        ]);
+        return redirect('/reservations');
+    }
+
+    public function update($reservation){
+        $reservation = Reservation::find($reservation);
+        $reservation->update([
+            'status' => "Cancelled"
         ]);
         return redirect('/reservations');
     }

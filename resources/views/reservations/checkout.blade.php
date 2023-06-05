@@ -15,7 +15,7 @@
 @section('page-content')
     <h3><i> Detail Reservation </i></h3>
     <div class="mt-5 mb-5">
-        <form action="/reservations/checkout/{{ $reservation->id }}" method="POST" enctype="multipart/form-data">
+        
             @method('PUT')
             @csrf
             <div class="row mb-4">
@@ -84,8 +84,10 @@
 
             <div class="row mb-4 mt-5 d-flex">
                 <div class="col mr-auto p-3">
-                    <form action="" method="GET">
-                        <button type="Back" class="btn btn-primary mb-3" style="width:20%">Back</button>
+                    <form action="/reservations" method="get">
+                    @csrf
+                        <input type="hidden" name="back_woi" value="{{ $reservation }}">
+                        <button type="submit" class="btn btn-primary mb-3" style="width:20%">Back</button>
                     </form>
                 </div>
                 <div class="col">
@@ -107,6 +109,6 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 @endsection

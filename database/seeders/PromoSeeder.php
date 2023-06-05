@@ -16,9 +16,18 @@ class PromoSeeder extends Seeder
     public function run()
     {
         DB::table('promos')->insert([
-            [ 'promo_code' => 'PROMOMARET'],
-            [ 'promo_code' => 'PROMOXXX'],
-            [ 'promo_code' => 'PROMONEW'],
-        ]);
+            'promo_code' => 'PROMO1',
+            'discount_percentage' => 50,
+        ], 
+        [
+            'promo_code' => 'PROMO2',
+            'discount_percentage' => 70,
+        ],
+        [
+            'promo_code' => 'PROMO3',
+            'discount_percentage' => 100,
+        ]
+    
+    );
     }
 }

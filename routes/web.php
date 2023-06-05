@@ -54,6 +54,7 @@ Route::post('/logout', [LoginController::class, 'logout']) -> middleware('auth')
 
 Route::get('/reservations', [ReservationsController::class, 'index']) -> middleware('auth');
 Route::post('/reservations',[ReservationsController::class, 'store']) -> middleware('auth');
+Route::put('/reservations/{reservation}',[ReservationsController::class, 'update']) -> middleware('auth');
 
 Route::get('/reservations/checkout/{reservation}',[ReservationsController::class, 'checkout']) -> middleware('auth');
 Route::put('/reservations/checkout/{reservation}',[ReservationsController::class, 'storeCheckout']) -> middleware('auth');
