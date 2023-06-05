@@ -13,6 +13,17 @@ use Ramsey\Uuid\Uuid;
 
 class ReservationsController extends Controller
 {
+
+    public function computePrice(Room $room, $total_rooms, $from, $to, Promo $promo = null){
+        $start_time = new DateTime($from);
+        $end_time = new DateTime($to);
+        $time = date_diff($start_time,$end_time);
+
+        $price = ($room->price * $total_rooms * $time->format("%a"));
+        $total_price = $price - ($price * ($promo ? $promo->discount_percentage : 0) / 100);
+        return $total_price;
+    }
+
     public function index(){
 
         $rooms = Room::all();
@@ -42,12 +53,11 @@ class ReservationsController extends Controller
             'total_adult' => 'nullable|integer|min:1|max:100',
             'total_child' => 'nullable|integer|min:1|max:100'
         ]);
-        $start_time = new DateTime($request->from);
-        $end_time = new DateTime($request->to);
-        $time = date_diff($start_time,$end_time);
+        
+        $promo = Promo::where('promo_code', $request->promo_codes)->first();
 
-        $promo_code = Promo::where('promo_code', $request->promo_codes)->first();
-        $total_price = $request->price * $request->total_rooms * $time->format("%a");
+        $total_price = $this->computePrice(Room::find($request->room_type), $request->total_rooms, $request->from, $request->to, $promo);
+
         $user_id = Auth::id();
 
         $reservation = Reservation::create([
@@ -59,7 +69,7 @@ class ReservationsController extends Controller
             'total_room' => $request->total_rooms,
             'total_price' => $total_price,
             'additional' => $request->additional,
-            'promo_id' => @$promo_code->id,
+            'promo_id' => $promo ? $promo->id : null,
             'user_id' => $user_id,
             'status' => "Draft"
         ]);
@@ -96,10 +106,10 @@ class ReservationsController extends Controller
         $request = request();
     
         $reservation = Reservation::find($reservation);
-
-        $time = date_diff(new DateTime($request->from),new DateTime($request->to));
-
-        $total_price = $request->price * $request->total_rooms * $time->format("%a");
+        
+        $promo = Promo::where('promo_code', $request->promo_codes)->first();
+        
+        $total_price = $this->computePrice(Room::find($request->room_type), $request->total_rooms, $request->from, $request->to, $promo);
 
         $reservation->update([
             'room_id' => $request->room_type,
