@@ -6,6 +6,7 @@ use App\Models\Promo;
 use App\Models\Reservation;
 use App\Models\Room;
 use App\Models\Transaction;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Ramsey\Uuid\Uuid;
@@ -34,9 +35,12 @@ class ReservationsController extends Controller
             'total_adult' => 'nullable|integer|min:1|max:100',
             'total_child' => 'nullable|integer|min:1|max:100'
         ]);
+        $start_time = new DateTime($request->from);
+        $end_time = new DateTime($request->to);
+        $time = date_diff($start_time,$end_time);
 
         $promo_code = Promo::where('promo_code', $request->promo_codes)->first();
-        $total_price = $request->price * $request->total_rooms;
+        $total_price = $request->price * $request->total_rooms * $time->format("%a");
         $user_id = Auth::id();
 
 

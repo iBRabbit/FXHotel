@@ -80,7 +80,8 @@
                 <div class="col">
                     <h5>{{ $reservation->total_price }}</h5>
                 </div>
-
+            </div>
+            
             <div class="row mb-4 mt-5 d-flex">
                 <div class="col mr-auto p-3">
                     <button type="Back" class="btn btn-primary mb-3" style="width:20%">Back</button>
