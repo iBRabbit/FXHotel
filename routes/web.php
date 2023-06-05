@@ -4,6 +4,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\TransactionController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,5 +62,8 @@ Route::get('/reservations/checkout/{reservation}',[ReservationsController::class
 Route::put('/reservations/checkout/{reservation}',[ReservationsController::class, 'storeCheckout']) -> middleware('auth');
 Route::delete('/reservations/checkout/{reservation}', [ReservationsController::class, 'cancelCheckout'] ) -> middleware('auth');
 Route::get('/reservations/checkout/{reservation}', [ReservationsController::class, 'updateCheckout'] ) -> middleware('auth');
+
+
+Route::get('/transactions', [TransactionController::class, 'index']) -> middleware('auth');
 
 Route::resource('/rooms', RoomController::class);

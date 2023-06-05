@@ -81,7 +81,7 @@
                     <h5>Rp. {{number_format($reservation->total_price, 0, ',', '.')}}</h5>
                 </div>
             </div>
-
+            
             <div class="row mb-4 mt-5 d-flex">
                 <div class="col mr-auto p-3">
                     <form action="/reservations" method="get">

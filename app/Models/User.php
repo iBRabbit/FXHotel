@@ -25,6 +25,10 @@ class User extends Authenticatable
         return $this->hasMany(Reservations::class, "user_id", "id");
     }
 
+    public function transactions(){
+        return $this->hasMany(Transaction::class, "user_id", "id");
+    }
+
     protected $guarded = [
         'id'
     ];

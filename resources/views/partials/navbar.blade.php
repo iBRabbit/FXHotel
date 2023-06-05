@@ -26,7 +26,7 @@
                     <a class="nav-link text-primary" href="/facilities">Facilities</a>
                 </li>
                 <li class="nav-item ps-2 pe-2">
-                    <a class="nav-link text-primary" href="/aboutus">About us</a>
+                    <a class="nav-link text-primary" href="/aboutus">About Us</a>
                 </li>
 
                 @if (Auth::check())
@@ -36,6 +36,9 @@
                             {{ "Hi, " . Auth::user()->getLastName()}}
                         </a>
                         <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="/transactions">My Transactions</a>
+                            </li>
                             <li>
                                 <form action="/logout" method="post">
                                     @csrf

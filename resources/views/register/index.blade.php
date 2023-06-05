@@ -15,16 +15,6 @@
 @section('page-content')
     <div class="register-container-box p-5  mt-5 mb-5" style="background-color: #dee2e6; border:0px solid black; border-radius: 10px">
 
-        {{-- Error Message --}}
-        @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         
         <form action="/register" method="POST">
             @csrf
@@ -92,7 +82,7 @@
     
                 <div class="row">
                     <div class="col d-flex justify-content-center mt-3">
-                        <p>Already has an account? <span> <a href="/login">Register Now</a></span></p>
+                        <p>Already has an account? <span> <a href="/login">Login</a></span></p>
                     </div>
                 </div>
             </div>

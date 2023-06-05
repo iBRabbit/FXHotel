@@ -12,6 +12,11 @@ class Room extends Model
     public $timestamps = false;
     protected $guarded = ["id"];
 
+    public function scopeFilter($query) {
+        if(request('search')) 
+            return $query->where('name', 'like', '%' . request('search') . '%');
+    }
+
     public function roomImages(){
         return $this->hasMany(RoomImage::class, "room_id", "id");
     }

@@ -16,8 +16,11 @@ class RoomController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+
+        $rooms = request('search') ? Room::filter(request(['search']))->get() : Room::all();
+
         return view('rooms/index', [
-            'rooms' => Room::all(),
+            'rooms' => $rooms,
             'pageTitle' => 'Our Rooms'
         ]);
     }
@@ -73,35 +76,47 @@ class RoomController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Room $room)
     {
-        //
+        return view('rooms/show', [
+            'pageTitle' => 'Show',
+            'room' => $room
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Room $room)
     {
-        //
+        return view('rooms/edit', [
+            'pageTitle' => 'Edit',
+            'room' => $room
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Room $room)
     {
-        //
+        $room->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'facilities' => $request->facilities,
+        ]);
+        return redirect('/rooms')->with('success', 'Room updated successfully.');
     }
 
     /**
