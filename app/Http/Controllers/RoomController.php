@@ -16,8 +16,11 @@ class RoomController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+
+        $rooms = request('search') ? Room::filter(request(['search']))->get() : Room::all();
+
         return view('rooms/index', [
-            'rooms' => Room::all(),
+            'rooms' => $rooms,
             'pageTitle' => 'Our Rooms'
         ]);
     }
