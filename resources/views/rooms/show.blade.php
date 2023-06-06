@@ -72,15 +72,17 @@
                 </div>
             </div>
         </div>
-        <div class="form-content">
-            <form action="/rooms/{{ $room->id }}" method="post" enctype="multipart/form-data">
-                <div class="row d-flex justify-content-end p-3">
-                    @csrf
-                    <a class="btn btn-primary" href="/reservations" style="color:white; width:8vw">Reserve Now</a>
-                    {{-- <button type="submit" class="btn btn-primary mb-3 " style="width:20%" >Reserve Room</button> --}}
-                </div>
-            </form>
-        </div>
+        @if (Auth::check())
+            <div class="form-content">
+                <form action="/rooms/{{ $room->id }}" method="post" enctype="multipart/form-data">
+                    <div class="row d-flex justify-content-end p-3">
+                        @csrf
+                        <a class="btn btn-primary" href="/reservations" style="color:white; width:9vw">Reserve Room</a>
+                        {{-- <button type="submit" class="btn btn-primary mb-3 " style="width:20%" >Reserve Room</button> --}}
+                    </div>
+                </form>
+            </div>
+        @endif
     </div>
 
         {{-- JQuery --}}

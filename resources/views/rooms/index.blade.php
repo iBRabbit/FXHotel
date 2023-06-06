@@ -53,9 +53,9 @@
                                     <a href="/rooms/{{ $room->id }}" class="btn btn-primary me-3" style="width:7vw">View</a>
                                 @else
                                     <div class="admin-button d-flex flex-row justify-content-center">
-                                        <a href="/rooms/{{ $room->id }}" class="btn btn-warning me-3">View</a>
+                                        <a href="/rooms/{{ $room->id }}" class="btn btn-primary me-3">View</a>
 
-                                        <a href="/rooms/{{ $room->id }}/edit" class="btn btn-primary me-3">Update</a>
+                                        <a href="/rooms/{{ $room->id }}/edit" class="btn btn-warning me-3">Update</a>
                                         
                                         <form action="/rooms/{{ $room->id }}" method="post" class="">
                                             @csrf
