@@ -7,18 +7,6 @@
 @section('page-content')
     <div class="page-content-container mt-4" style="width:50vw">
 
-        {{-- Error Message --}}
-        @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-
         <div class="form-content">
             <form action="/rooms/{{ $room->id }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -58,6 +46,26 @@
                         </div>
                     </div>
                 </div>
+                
+                {{-- Show room images and give option to delete --}}
+                <div class="row mb-4">
+                    <div class="col">
+                        <label for="">
+                            <h5>Room Images</h5>
+                        </label>
+                        <div class="row">
+                            @foreach ($room->roomImages as $image)
+                                <div class="col">
+                                    <img src="{{ asset('storage/' . $image->image) }}" alt="" class="img-thumbnail" style="width: 30vw; border-radius: 10px; margin: 0 auto; padding: 0;">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="/rooms/{{ $room->id }}/delete-image/{{ $image->id }}" class="btn btn-danger mt-2">Delete</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="row">
                     <div class="col">

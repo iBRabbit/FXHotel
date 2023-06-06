@@ -7,18 +7,6 @@
 @section('page-content')
     <div class="page-content-container mt-4" style="width:50vw">
 
-        {{-- Error Message --}}
-        @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-
         <div class="form-content">
             <form action="/rooms/" method="post" enctype="multipart/form-data">
                 @csrf
