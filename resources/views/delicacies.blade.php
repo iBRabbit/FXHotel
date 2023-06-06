@@ -31,7 +31,7 @@
               </div>
             </div>
           </div>
-        </div>  
+        </div>
         <div class="row" style="margin-top: 7vh;">
             <div class="col-sm-6">
               <div class="card text-center">
@@ -44,13 +44,13 @@
             <div class="col-sm-6">
               <div class="card text-center">
                 <div class="card-body">
-                    <img src="{{asset('images/delicacies/indian.jpg') }}" class="card-img-top" alt="...">
-                    <h5 class="card-title" style="margin-top: 4vh">Indian Cuisine</h5>
+                    <img src="{{asset('images/delicacies/japan.jpg') }}" class="card-img-top" alt="...">
+                    <h5 class="card-title" style="margin-top: 4vh">Japanese Cuisine</h5>
                 </div>
               </div>
             </div>
           </div>
-        </div>  
+        </div>
     </div>
     <br>
     <br>

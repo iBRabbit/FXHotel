@@ -19,17 +19,22 @@
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
 
-                <li class="nav-item button ps-2 pe-2">
-                    <a class="nav-link btn btn-primary" style="color:white; width:10vw"
-                    href= 
-                    {{ 
-                        $isUserHasReservation ? 
-                        "/reservations/checkout/" . $isUserHasReservation->id : 
-                        "/reservations"
-                    }}
-                    
-                    >Reserve Now</a>
-                </li>
+                {{-- @dd(Auth::user()) --}}
+
+                @if(!Auth::check() || !Auth::user()->isAdmin())
+
+                    <li class="nav-item button ps-2 pe-2">
+                        <a class="nav-link btn btn-primary" style="color:white; width:10vw"
+                        href=
+                        {{
+                            $isUserHasReservation ?
+                            "/reservations/checkout/" . $isUserHasReservation->id :
+                            "/reservations"
+                        }}
+
+                        >Reserve Now</a>
+                    </li>
+                @endif
 
                 <li class="nav-item ps-2 pe-2">
 

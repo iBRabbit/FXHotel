@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-        @if (Auth::check())
+        @if (!Auth::check() || !Auth::user()->isAdmin())
             <div class="form-content">
                 <form action="/rooms/{{ $room->id }}" method="post" enctype="multipart/form-data">
                     <div class="row d-flex justify-content-end p-3">
@@ -88,7 +88,7 @@
         {{-- JQuery --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script>
-            // Tambah input field untuk gambar 
+            // Tambah input field untuk gambar
             var i = 1; // iterasi untuk id img-preview
 
             $('#add-img-btn').click(function() { // Ketika tombol add image diklik
@@ -107,7 +107,7 @@
                 i++;
             });
 
-            // Delete image input field 
+            // Delete image input field
             $(document).on('click', '#delete-img-btn', function() {
                 $(this).parent().parent().remove();
             });

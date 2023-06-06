@@ -43,7 +43,7 @@
                                         class="card-img-top" alt="{{ $room->name . ' image' }}"
                                         style="width:100%; height:60vh">
                                 @else
-                                    <img src="{{ asset('images/delicacies/indonesian.jpg') }}" class="card-img-top"
+                                    <img src="{{ asset('images/room/suite.jpg') }}" class="card-img-top"
                                         alt="default picture." style="width:100%; height:60vh">
                                 @endif
 
@@ -56,7 +56,7 @@
                                         <a href="/rooms/{{ $room->id }}" class="btn btn-primary me-3">View</a>
 
                                         <a href="/rooms/{{ $room->id }}/edit" class="btn btn-warning me-3">Update</a>
-                                        
+
                                         <form action="/rooms/{{ $room->id }}" method="post" class="">
                                             @csrf
                                             @method('DELETE')
