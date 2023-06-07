@@ -39,7 +39,7 @@
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('images/room/suite') }}" class="card-img-top"
+                            <img src="{{ asset('images/room/suite.jpg') }}" class="card-img-top"
                                 alt="default picture." style="width:100%; height:60vh">
                         </div>
                     </div>
