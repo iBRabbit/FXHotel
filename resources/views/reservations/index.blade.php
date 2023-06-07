@@ -9,8 +9,8 @@
 @endsection --}}
 
 @php
-    
-    
+
+
 @endphp
 
 @section('image-desc')
@@ -22,7 +22,7 @@
     <div class="form-content mt-2 mb-5">
         <form action="{{ $isUserHasReservation ? "/reservations/" . $oldReservation->id : "/reservations" }}" method="post" enctype="multipart/form-data">
             @csrf
-            
+
             @if ($isUserHasReservation)
                 @method('PUT')
             @endif
@@ -43,7 +43,7 @@
                                         else echo "";
                                     }
                                 @endphp
-                            >  
+                            >
                             {{ $room->name }}
                             </option>
                         @endforeach
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 d-flex align-items-center gap-2">
-                            <input type="number" class="form-control" name="total_child" aria-label="total-child" pattern="\d+" inputmode="numeric" min="0" max="10" value={{ $isUserHasReservation ? $oldReservation->total_children : old('total_child', @$reservations->total_children) ?? "" }}> 
+                            <input type="number" class="form-control" name="total_child" aria-label="total-child" pattern="\d+" inputmode="numeric" min="0" max="10" value={{ $isUserHasReservation ? $oldReservation->total_children : old('total_child', @$reservations->total_children) ?? "" }}>
                             <div class="">
                                 <h5>Childs<h5>
                             </div>
@@ -96,9 +96,9 @@
             <div class="row mb-4">
                 <div class="col">
                     <h5>Enter Promo Code (Optional)</h5>
-                    <input type="text" class="form-control" name = "promo_codes" aria-label="promo-codes"> 
+                    <input type="text" class="form-control" name = "promo_codes" aria-label="promo-codes">
                 </div>
-                
+
                 <div class="col">
                     <h5>Additional Request</h5>
                     <input type="text" class="form-control" name = "additional" aria-label="additional-req" value="{{ $isUserHasReservation ? $oldReservation->additional : old('additional', @$reservations->total_children) ?? ""}}">
@@ -113,11 +113,11 @@
                     </div>
                 </div>
                 <div class="col d-flex justify-content-end align-items-end">
-                    <button type="Reserve Now" class="btn btn-success mt-auto" style="width:20%" id="reserve_now_btn">Reserve Now</button>
+                    <button type="Reserve Now" class="btn btn-success mt-auto" style="width:20%" name="reserve_now_btn" id="reserve_now_btn">Reserve Now</button>
                 </div>
             </div>
         </form>
-        
+
     </div>
     <script>
         let room_type = document.getElementById('room_type');
@@ -128,7 +128,7 @@
             let price = parseInt(selected_price).toLocaleString('id-ID');
             document.getElementById('selected_price').placeholder = `Rp ${price}`;
         });
-        
+
         reserve_now_btn.addEventListener('click', function(e) {
             let selected_price = room_type.options[room_type.selectedIndex].getAttribute('data-price');
             let price = parseInt(selected_price).toLocaleString('id-ID');

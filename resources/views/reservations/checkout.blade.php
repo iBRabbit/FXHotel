@@ -15,7 +15,7 @@
 @section('page-content')
     <h3><i> Detail Reservation </i></h3>
     <div class="mt-5 mb-5">
-        
+
         {{-- Success Message --}}
         @if (session('success'))
             <div class="alert alert-success">
@@ -56,7 +56,7 @@
                 <h5>Number of Guest(s)</h5>
             </div>
             <div class="col">
-                <h5>{{ $reservation->total_adult }} Adults(s) {{ $reservation->total_children }} Children(s)</h5>
+                <h5>{{ $reservation->total_adult }} Adult(s) {{ $reservation->total_children }} Children(s)</h5>
             </div>
         </div>
 
