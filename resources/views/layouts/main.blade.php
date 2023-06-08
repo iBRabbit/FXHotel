@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
 
 <head>
     <meta charset="UTF-8">
@@ -17,6 +17,65 @@
            }
        </style>
 </head>
+
+@php
+    function isCookieSet($cookieName) {
+        return Cookie::get($cookieName) ? true : false;
+    }
+
+    function getCookieValue($cookieName) {
+        return Cookie::get($cookieName);
+    }
+
+    function isURLContainsLanguage($lang) {
+        $url = url()->current();
+        return strpos($url, $lang) !== false;
+    }
+
+    function setLanguageURL($lang) {
+        App::setlocale($lang);
+        $url = url()->current();
+        
+        if(isURLContainsLanguage('/en')) {
+            $url = str_replace('/en', '', $url);
+            $lang = "en";
+            Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
+            $url = $url . '/' . $lang;
+            return $url;
+        }
+        if(isURLContainsLanguage('/cn')){
+            $url = str_replace('/cn', '', $url);
+            $lang = "cn";
+            Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
+            $url = $url . '/' . $lang;
+            return $url;
+        }
+        if(isURLContainsLanguage('/id')){ 
+            $url = str_replace('/id', '', $url);
+            $lang = "id";
+            Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
+            $url = $url . '/' . $lang;
+            return $url;
+        }
+        
+
+        $lang = "Event::createClassListener(listener);";
+        Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
+        $url = $url . '/' . $lang;
+            // print($url);
+
+        // if(Cookie::get('lang')) {
+        //     Cookie::forget('lang');
+        // }
+
+        // Cookie::forget('lang');
+        // // print("Cookie forgeted");
+        // Log::debug("Cookie forgeted");
+        // Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
+        // print(Cookie::get('lang'));
+        return $url;
+    } 
+@endphp
 
 <body class="d-flex flex-column min-vh-100">
 
@@ -36,6 +95,7 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    
     @if ($errors->any())
         <script>
             let errorMessages = {
@@ -53,6 +113,31 @@
         </script>
     @endif
 
+    <script>
+        let en_dropdown = document.getElementById("en_dropdown");
+        let id_dropdown = document.getElementById("id_dropdown");
+        let cn_dropdown = document.getElementById("cn_dropdown");
+        // let btn = document.getElementById("btn");
+
+        // btn.addEventListener("click", () => {
+        //     console.log("Masuk");
+        // });
+
+        // en_dropdown.addEventListener("click", () => {
+        //     {{ Cookie::queue(Cookie::make('lang', 'en')) }}
+        //     console.log("Masuk")
+        // });
+
+        // id_dropdown.addEventListener("click", () => {
+        //     {{ Cookie::queue(Cookie::make('lang', 'id')) }}
+        // });
+
+        // cn_dropdown.addEventListener("click", () => {
+        //     {{ Cookie::queue(Cookie::make('lang', 'cn')) }}
+        // });
+
+
+    </script>
 </body>
 
 </html>

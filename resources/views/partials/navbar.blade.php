@@ -3,6 +3,8 @@
     $isUserHasReservation = Auth::check() ? Reservation::where('user_id', Auth::user()->id)->where('status', 'pending')->first() : null;
 @endphp
 
+
+
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
 
@@ -44,7 +46,7 @@
                     <a class="nav-link text-primary" href="/facilities">Facilities</a>
                 </li>
                 <li class="nav-item ps-2 pe-2">
-                    <a class="nav-link text-primary" href="/aboutus">About Us</a>
+                    <a class="nav-link text-primary" href="/aboutus/{{ isCookieSet('lang') ? getCookieValue('lang') : "" }}">About Us</a>
                 </li>
 
                 @if (Auth::check())
