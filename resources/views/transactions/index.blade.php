@@ -2,17 +2,17 @@
 
 @section('content')
     <div class="transaction-container">
-        <h1 class="text-center mt-3 mb-3">Transactions</h1>
+        <h1 class="text-center mt-3 mb-3">{{__('transaction.title')}}</h1>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">UUID</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Total Room</th>
-                    <th scope="col">Total Adult</th>
-                    <th scope="col">Total Children</th>
-                    <th scope="col">Total Price</th>
+                    <th scope="col">{{__('transaction.uuid')}}</th>
+                    <th scope="col">{{__('transaction.date')}}</th>
+                    <th scope="col">{{__('transaction.total_room')}}</th>
+                    <th scope="col">{{__('transaction.total_adult')}}</th>
+                    <th scope="col">{{__('transaction.total_child')}}</th>
+                    <th scope="col">{{__('transaction.total_price')}}</th>
                 </tr>
             </thead>
             <tbody>

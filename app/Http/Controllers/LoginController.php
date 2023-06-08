@@ -11,7 +11,7 @@ define('COOKIE_TIME', 60 * 60 * 24 * 30);
 class LoginController extends Controller
 {
     public function index() {
-        App::setlocale(Cookie::get('lang'));
+        App::setlocale(session('lang'));
         return view('login/index', [
             'pageTitle' => 'Login'
         ]);

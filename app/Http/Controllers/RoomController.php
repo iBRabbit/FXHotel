@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\RoomImage;
-
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
 class RoomController extends Controller
@@ -16,7 +16,7 @@ class RoomController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-
+        App::setlocale(session('lang'));
         $rooms = request('search') ? Room::filter(request(['search']))->get() : Room::all();
 
         return view('rooms/index', [
@@ -81,6 +81,7 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
+        App::setlocale(session('lang'));
         return view('rooms/show', [
             'pageTitle' => 'Show',
             'room' => $room
@@ -94,7 +95,9 @@ class RoomController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Room $room)
-    {
+    {   
+        $this->authorize('admin');
+        App::setlocale(session('lang'));
         return view('rooms/edit', [
             'pageTitle' => 'Edit',
             'room' => $room
@@ -112,7 +115,7 @@ class RoomController extends Controller
     {
         
         $validatedData = $request->validate([
-            'name' => 'required|unique:rooms,name,'.$room->id,
+            'name' => 'required|unique:rooms,name,'.$room->id, // ignore current room name
             'description' => 'required',
             'price' => 'required|numeric|min:1000',
             'facilities' => 'required',

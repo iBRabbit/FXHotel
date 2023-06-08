@@ -2,6 +2,6 @@
 
 return [
     'banner_text' => 'Relaxation at its finest',
-    'specialities' => 'Our Speciality',
+    'facilities' => 'Our Speciality',
     'delicacy' => 'Our Delicacies'
 ];

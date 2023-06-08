@@ -28,11 +28,11 @@
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="visually-hidden">{{__('roomShow.prev')}}</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="visually-hidden">{{__('roomShow.next')}}</span>
                         </button>
                     </div>
             @else
@@ -46,28 +46,28 @@
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        <span class="visually-hidden">{{__('roomShow.prev')}}</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                        <span class="visually-hidden">{{__('romShow.next')}}</span>
                     </button>
                 </div>
             @endif
         </div>
         <div class="mt-3 mb-5">
             <h1><i> {{ $room->name }} </i></h1>
-            <h3> Rp. {{ $room->price }}/night </h3>
+            <h3> Rp. {{ $room->price }}{{__('roomShow.night')}}</h3>
         </div>
         <div class="mt-5 mb-5">
             <div class="row mb-4">
                 <div class="col">
-                    <h5>Room Description</h5>
+                    <h5>{{__('roomShow.description')}}</h5>
                     <p>{{ $room->description }}</p>
                 </div>
                 <div class="col">
-                    <h5>Room Facilities</h5>
+                    <h5>{{__('roomShow.facilities')}}</h5>
                     <p>{{ $room->facilities }}</p>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                 <form action="/rooms/{{ $room->id }}" method="post" enctype="multipart/form-data">
                     <div class="row d-flex justify-content-end p-3">
                         @csrf
-                        <a class="btn btn-primary" href="/reservations" style="color:white; width:9vw">Reserve Room</a>
+                        <a class="btn btn-primary" href="/reservations" style="color:white; width:9vw">{{__('roomShow.reserve-btn')}}</a>
                         {{-- <button type="submit" class="btn btn-primary mb-3 " style="width:20%" >Reserve Room</button> --}}
                     </div>
                 </form>

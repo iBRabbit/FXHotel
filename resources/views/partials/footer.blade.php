@@ -46,7 +46,7 @@
             <div class="btn-group dropup">
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false" id = "btn">
-                    {{ Cookie::get('lang'); }}
+                    {{ session('lang') ?? 'en'}}
                 </button>
                 <ul class="dropdown-menu">
                     <!-- Dropdown menu links -->

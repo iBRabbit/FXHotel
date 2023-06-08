@@ -10,6 +10,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ReservationsController;
+use Illuminate\Support\Facades\Session;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +28,7 @@ use App\Http\Controllers\ReservationsController;
 
 
 Route::get('/', function () {
-    App::setLocale(Cookie::get('lang'));
+    App::setLocale(session('lang'));
     return view('home', [
         'pageTitle' => 'Welcome to Fx Hotel'
     ]);
@@ -34,19 +37,21 @@ Route::get('/', function () {
 Route::redirect('/home', '/');
 
 Route::get('/aboutus', function () {
-    App::setLocale(Cookie::get('lang'));
+    App::setLocale(session('lang'));
     return view('aboutus', [
         'pageTitle' => 'About Us'
     ]);
 });
 
 Route::get('/facilities', function () {
+    App::setLocale(session('lang'));
     return view('facilities', [
         'pageTitle' => 'Our Facilities'
     ]);
 });
 
 Route::get('/delicacies', function () {
+    App::setLocale(session('lang'));
     return view('delicacies', [
         'pageTitle' => 'Our Delicacies'
     ]);
@@ -56,10 +61,7 @@ Route::get('change-lang', function (Request $request)
 {
     $lang = $request->lang;
     App::setLocale($lang);
-    if(Cookie::get('lang')) {
-        Cookie::forget('lang');
-    }
-    Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
+    Session::put('lang', $lang);
 
     return redirect()->back();
 })->name('change-lang');

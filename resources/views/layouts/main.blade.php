@@ -1,6 +1,4 @@
-@php
-    App::setLocale(Cookie::get('lang')); 
-@endphp
+{{ App::setLocale(session('lang')) }}
 <!DOCTYPE html>
 <html lang="cn">
 <head>

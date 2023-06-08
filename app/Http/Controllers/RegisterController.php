@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     public function index() {
-        App::setLocale(Cookie::get('lang'));
+        App::setlocale(session('lang'));
         return view('register/index', [
             'pageTitle' => 'Register',
             'countryCodes' => $this->fetchCountryCodeFromJSON(),

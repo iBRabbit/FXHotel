@@ -9,6 +9,7 @@ return [
         'facilities' => 'Enter room facilities',
         'roomImage' => 'Room Images',
         'add-img-btn' => 'Add Image',
-        'submit-btn' => 'Submit'
+        'submit-btn' => 'Submit',
+        'delete-btn' => 'Delete'
     ]
 ];

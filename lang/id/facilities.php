@@ -2,7 +2,7 @@
 
 return [
     'title' => 'Daftar Fasilitas',
-    'pool' => 'Kolam Renang',
+    'pools' => 'Kolam Renang',
     'spa' => 'Spa',
     'restaurant' => 'Restoran Terbaik',
     'gym' => 'Gym'

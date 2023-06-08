@@ -88,7 +88,7 @@
                         <img src="{{asset('images/home/card-home-ourfacilities.jpg') }}" class="img-fluid rounded-start" alt="..." style="max-width: 400px">
                     </div>
                     <div class="col-md-4 d-flex align-items-center justify-content-center" style="background-color: #72AAFF">
-                            <h1 class="text-end text-white ps-3 pe-3" style="text-shadow: 2px 2px #636363; ">{{__('home.specialities')}}</h1>
+                            <h1 class="text-end text-white ps-3 pe-3" style="text-shadow: 2px 2px #636363; ">{{__('home.facilities')}}</h1>
                     </div>
                 </div>
 
