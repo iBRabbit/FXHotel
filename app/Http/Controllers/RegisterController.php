@@ -7,14 +7,13 @@ use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    public function index($lang = 'en') {
-
-        App::setLocale($lang);
-
+    public function index() {
+        App::setLocale(Cookie::get('lang'));
         return view('register/index', [
             'pageTitle' => 'Register',
             'countryCodes' => $this->fetchCountryCodeFromJSON(),

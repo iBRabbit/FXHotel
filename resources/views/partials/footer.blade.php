@@ -55,9 +55,9 @@
                 </button>
                 <ul class="dropdown-menu">
                     <!-- Dropdown menu links -->
-                    <li><a class="dropdown-item" href="{{ setLanguageURL("cn")}}" id = "cn_dropdown">Chinese</a></li>
-                    <li><a class="dropdown-item" href="{{ setLanguageURL("id") }}" id = "id_dropdown">Indonesian</a></li>
-                    <li><a class="dropdown-item" href="{{ setLanguageURL("en") }}" id = "en_dropdown">English</a></li>
+                    <li><a class="dropdown-item" href="{{ route('change-lang', ['lang'=>'id']) }}" id = "id_dropdown">IND</a></li>
+                    <li><a class="dropdown-item" href="{{ route('change-lang', ['lang'=>'en']) }}" id = "id_dropdown">EN</a></li>
+                    <li><a class="dropdown-item" href="{{ route('change-lang', ['lang'=>'cn']) }}" id = "cn_dropdown">CN</a></li>
                 </ul>
             </div>
         </div>

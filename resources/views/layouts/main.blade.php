@@ -33,7 +33,7 @@
     }
 
     function setLanguageURL($lang) {
-        App::setlocale($lang);
+        App::setLocale($lang);
         $url = url()->current();
         
         if(isURLContainsLanguage('/en')) {
@@ -62,7 +62,7 @@
         $lang = "Event::createClassListener(listener);";
         Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
         $url = $url . '/' . $lang;
-            // print($url);
+        // print($url);
 
         // if(Cookie::get('lang')) {
         //     Cookie::forget('lang');
