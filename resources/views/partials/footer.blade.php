@@ -38,11 +38,6 @@
     }
 </style>
 
-
-@php
-
-@endphp
-
 <footer class="navbar navbar-expand-lg navbar-light  d-flex justify-content-center mt-auto">
 
     <div class="footer-left">
@@ -51,7 +46,7 @@
             <div class="btn-group dropup">
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false" id = "btn">
-                    Select Language
+                    {{ Cookie::get('lang'); }}
                 </button>
                 <ul class="dropdown-menu">
                     <!-- Dropdown menu links -->

@@ -1,6 +1,8 @@
+@php
+    App::setLocale(Cookie::get('lang')); 
+@endphp
 <!DOCTYPE html>
 <html lang="cn">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,65 +19,6 @@
            }
        </style>
 </head>
-
-@php
-    function isCookieSet($cookieName) {
-        return Cookie::get($cookieName) ? true : false;
-    }
-
-    function getCookieValue($cookieName) {
-        return Cookie::get($cookieName);
-    }
-
-    function isURLContainsLanguage($lang) {
-        $url = url()->current();
-        return strpos($url, $lang) !== false;
-    }
-
-    function setLanguageURL($lang) {
-        App::setLocale($lang);
-        $url = url()->current();
-        
-        if(isURLContainsLanguage('/en')) {
-            $url = str_replace('/en', '', $url);
-            $lang = "en";
-            Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
-            $url = $url . '/' . $lang;
-            return $url;
-        }
-        if(isURLContainsLanguage('/cn')){
-            $url = str_replace('/cn', '', $url);
-            $lang = "cn";
-            Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
-            $url = $url . '/' . $lang;
-            return $url;
-        }
-        if(isURLContainsLanguage('/id')){ 
-            $url = str_replace('/id', '', $url);
-            $lang = "id";
-            Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
-            $url = $url . '/' . $lang;
-            return $url;
-        }
-        
-
-        $lang = "Event::createClassListener(listener);";
-        Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
-        $url = $url . '/' . $lang;
-        // print($url);
-
-        // if(Cookie::get('lang')) {
-        //     Cookie::forget('lang');
-        // }
-
-        // Cookie::forget('lang');
-        // // print("Cookie forgeted");
-        // Log::debug("Cookie forgeted");
-        // Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
-        // print(Cookie::get('lang'));
-        return $url;
-    } 
-@endphp
 
 <body class="d-flex flex-column min-vh-100">
 

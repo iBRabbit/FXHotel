@@ -25,6 +25,7 @@ use App\Http\Controllers\ReservationsController;
 
 
 Route::get('/', function () {
+    App::setLocale(Cookie::get('lang'));
     return view('home', [
         'pageTitle' => 'Welcome to Fx Hotel'
     ]);
@@ -32,8 +33,7 @@ Route::get('/', function () {
 
 Route::redirect('/home', '/');
 
-Route::get('/aboutus/{lang?}', function ($lang = 'en') {
-    dd(Cookie::get('lang'));
+Route::get('/aboutus', function () {
     App::setLocale(Cookie::get('lang'));
     return view('aboutus', [
         'pageTitle' => 'About Us'
@@ -62,10 +62,10 @@ Route::get('change-lang', function (Request $request)
     Cookie::queue(Cookie::make('lang', $lang, 60 * 24 * 30));
 
     return redirect()->back();
-})->middleware('guest')->name('change-lang');
+})->name('change-lang');
 
-Route::get('/register/{lang?}', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register/{lang?}', [RegisterController::class, 'store'])->middleware('guest');
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');

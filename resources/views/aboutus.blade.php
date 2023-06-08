@@ -52,16 +52,16 @@
             <img src="{{ asset('images/aboutus/hospitality.jpg') }}" class="img-fluid " style="height:60vh" >
                 <div class="home_main_rectangle"></div>    
                 <div class="home_main_banner_text">
-                    <h1 class="text-center text-white" style="text-shadow: 2px 2px #636363; ">Hospitality is our passion.</h1>
+                    <h1 class="text-center text-white" style="text-shadow: 2px 2px #636363; ">{{ __('aboutus.title') }}</h1>
                 </div>
         </div>
         <br> 
-        <p style=""><i>Fx Lalala Hotels group is a fine hotelier that is very passionate to give every customer the hotel experience of their dreams. Established in 1876, our experience to serve customers from different backgrounds and ages is our strength.</i>
+        <p style=""><i>{{ __('aboutus.p1') }}</i>
         </p>
         <br>
-        <p>Our passion for providing top-notch service and attention to detail is a valuable asset, as it shows a commitment to creating a welcoming and comfortable environment for guests to relax and enjoy their stay. This dedication is especially important in the hospitality industry, where guests expect high-quality service and personalized attention.</p>
+        <p>{{ __('aboutus.p2') }}</p>
         <br>
-        <p>Overall, Fx Lalala Hotels group's longevity in the industry and their focus on customer satisfaction make them a strong choice for anyone seeking a high-quality hotel experience.</p>
+        <p>{{ __('aboutus.p3') }}</p>
         <br>
     </div>
 @endsection

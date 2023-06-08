@@ -3,8 +3,6 @@
     $isUserHasReservation = Auth::check() ? Reservation::where('user_id', Auth::user()->id)->where('status', 'pending')->first() : null;
 @endphp
 
-
-
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
 
@@ -21,8 +19,6 @@
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
 
-                {{-- @dd(Auth::user()) --}}
-
                 @if(!Auth::check() || !Auth::user()->isAdmin())
 
                     <li class="nav-item button ps-2 pe-2">
@@ -34,19 +30,19 @@
                             "/reservations"
                         }}
 
-                        >Reserve Now</a>
+                        >{{ __('navbar.reserve') }}</a>
                     </li>
                 @endif
 
                 <li class="nav-item ps-2 pe-2">
 
-                    <a class="nav-link text-primary" href="/rooms">Rooms</a>
+                    <a class="nav-link text-primary" href="/rooms">{{ __('navbar.rooms') }}</a>
                 </li>
                 <li class="nav-item ps-2 pe-2">
-                    <a class="nav-link text-primary" href="/facilities">Facilities</a>
+                    <a class="nav-link text-primary" href="/facilities">{{ __('navbar.facilities') }}</a>
                 </li>
                 <li class="nav-item ps-2 pe-2">
-                    <a class="nav-link text-primary" href="/aboutus/{{ isCookieSet('lang') ? getCookieValue('lang') : "" }}">About Us</a>
+                    <a class="nav-link text-primary" href="/aboutus">{{ __('navbar.aboutus') }}</a>
                 </li>
 
                 @if (Auth::check())
@@ -57,12 +53,12 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="/transactions">My Transactions</a>
+                                <a class="dropdown-item" href="/transactions">{{ __('navbar.dropdown.myTransaction') }}</a>
                             </li>
                             <li>
                                 <form action="/logout" method="post">
                                     @csrf
-                                    <button type="submit" class="dropdown-item">Logout</button>
+                                    <button type="submit" class="dropdown-item">{{ __('navbar.dropdown.logout') }}</button>
                                 </form>
                             </li>
                         </ul>
