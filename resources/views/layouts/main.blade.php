@@ -1,6 +1,6 @@
+{{ App::setLocale(session('lang')) }}
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,6 +36,7 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    
     @if ($errors->any())
         <script>
             let errorMessages = {
@@ -53,6 +54,31 @@
         </script>
     @endif
 
+    <script>
+        let en_dropdown = document.getElementById("en_dropdown");
+        let id_dropdown = document.getElementById("id_dropdown");
+        let cn_dropdown = document.getElementById("cn_dropdown");
+        // let btn = document.getElementById("btn");
+
+        // btn.addEventListener("click", () => {
+        //     console.log("Masuk");
+        // });
+
+        // en_dropdown.addEventListener("click", () => {
+        //     {{ Cookie::queue(Cookie::make('lang', 'en')) }}
+        //     console.log("Masuk")
+        // });
+
+        // id_dropdown.addEventListener("click", () => {
+        //     {{ Cookie::queue(Cookie::make('lang', 'id')) }}
+        // });
+
+        // cn_dropdown.addEventListener("click", () => {
+        //     {{ Cookie::queue(Cookie::make('lang', 'cn')) }}
+        // });
+
+
+    </script>
 </body>
 
 </html>

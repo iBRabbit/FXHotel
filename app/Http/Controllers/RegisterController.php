@@ -6,15 +6,19 @@ use App\Models\Prefix;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
     public function index() {
+        App::setlocale(session('lang'));
         return view('register/index', [
             'pageTitle' => 'Register',
             'countryCodes' => $this->fetchCountryCodeFromJSON(),
             'prefixes' => Prefix::all()
+            
         ]);
     }
 

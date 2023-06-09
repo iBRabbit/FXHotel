@@ -2,6 +2,6 @@
 
 return [
     'banner_text' => 'Relaksasi yang terbaik',
-    'specialities' => 'Fasilitas Kami',
+    'facilities' => 'Fasilitas Kami',
     'delicacy' => 'Kelezatan Kami'
 ];

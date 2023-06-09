@@ -5,23 +5,22 @@
 @endsection
 
 @section('image-alt')
-    Register Header
+    {{ __('register.imageAlt') }}
 @endsection
 
 @section('image-desc')
-    Tranquil Luxury is Waiting
+    {{ __('register.imageDesc') }}
 @endsection
 
 @section('page-content')
     <div class="register-container-box p-5  mt-5 mb-5" style="background-color: #dee2e6; border:0px solid black; border-radius: 10px">
 
-        
         <form action="/register" method="POST">
             @csrf
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h5>Your Name</h5>
+                        <h5>{{ __('register.input.name') }}</h5>
                         <div class="input-group mb-3"">
     
                             <div class="gender-selector">
@@ -38,14 +37,14 @@
                     </div>
     
                     <div class="col">
-                        <h5>Your Email</h5>
+                        <h5>{{ __('register.input.email') }}</h5>
                         <input type="email" class="form-control" name="email">
                     </div>
                     
                 </div>
                 <div class="row">
                     <div class="col">
-                        <h5>Your Phone Number</h5>
+                        <h5>{{ __('register.input.phone') }}</h5>
                         <div class="input-group mb-3">
     
                             <div class="gender-selector">
@@ -62,27 +61,27 @@
                     </div>
     
                     <div class="col">
-                        <h5>Your ZIP Code</h5>
+                        <h5>{{ __('register.input.postal') }}</h5>
                         <input type="text" class="form-control" name="postal">
                     </div>
                 </div>
     
                 <div class="row">
                     <div class="col">
-                        <h5>Your Password</h5>
+                        <h5>{{ __('register.input.password') }}</h5>
                         <input type="password" class="form-control"  name="password">
                     </div>
                 </div>
                 
                 <div class="row">
                     <div class="col d-flex justify-content-center mt-5">
-                        <button type="submit" class="btn btn-success">Register Now</button>
+                        <button type="submit" class="btn btn-success">{{ __('register.input.register') }}</button>
                     </div>
                 </div>
     
                 <div class="row">
                     <div class="col d-flex justify-content-center mt-3">
-                        <p>Already has an account? <span> <a href="/login">Login</a></span></p>
+                        <p>{{ __('register.input.alreadyHasAAcc') }} <span> <a href="/login">{{ __('register.input.login') }}</a></span></p>
                     </div>
                 </div>
             </div>

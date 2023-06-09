@@ -14,11 +14,11 @@
 @endphp
 
 @section('image-desc')
-    Peaceful Slumber is one step closer.
+    {{__('reservationIndex.imageDesc')}}
 @endsection
 
 @section('page-content')
-    <h3><i> Reservation </i></h3>
+    <h3><i> {{__('reservationIndex.title')}}</i></h3>
     <div class="form-content mt-2 mb-5">
         <form action="{{ $isUserHasReservation ? "/reservations/" . $oldReservation->id : "/reservations" }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -29,9 +29,9 @@
 
             <div class="row mb-4">
                 <div class="col">
-                    <h5>Room Type</h5>
+                    <h5>{{__('reservationIndex.input.room_type')}}</h5>
                     <select class="form-select" name="room_type" id="room_type">
-                        <option value="" hidden>Choose your room</option>
+                        <option value="" hidden>{{__('reservationIndex.input.chooseRoom')}}</option>
                         @foreach ($rooms as $room)
                             <option value="{{ $room->id }}" data-price="{{ $room->price }}"
                                 @php
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <h5>Total Rooms</h5>
+                        <h5>{{__('reservationIndex.input.total_rooms')}}</h5>
                         <input type="number" class="form-control" name="total_rooms" aria-label="total-rooms" pattern="\d+" inputmode="numeric" min="0" max="10"
                             value={{ $isUserHasReservation ? $oldReservation->total_room : old('total_rooms', @$reservations->total_room) ?? ""}}
                         >
@@ -61,7 +61,7 @@
 
             <div class="row mb-4">
                 <div class="col">
-                    <h5>Dates</h5>
+                    <h5>{{__('reservationIndex.input.dates')}}</h5>
                     <div class="row">
                         <div class="col">
                             <input placeholder="From" class="form-control" name="from" type="text"
@@ -75,18 +75,18 @@
                 </div>
 
                 <div class="col">
-                    <h5>Total Guest</h5>
+                    <h5>{{__('reservationIndex.input.totalGuest')}}</h5>
                     <div class="row">
                         <div class="col-lg-4 d-flex align-items-center gap-2">
                             <input type="number" class="form-control" name="total_adult" aria-label="total-adult" pattern="\d+" inputmode="numeric" min="0" max="10" value="{{ $isUserHasReservation ? $oldReservation->total_adult : old('total_adult', @$reservations->total_adult) ?? "" }}">
                             <div class="">
-                                <h5>Adults</h5>
+                                <h5>{{__('reservationIndex.input.total_adult')}}</h5>
                             </div>
                         </div>
                         <div class="col-lg-4 d-flex align-items-center gap-2">
                             <input type="number" class="form-control" name="total_child" aria-label="total-child" pattern="\d+" inputmode="numeric" min="0" max="10" value={{ $isUserHasReservation ? $oldReservation->total_children : old('total_child', @$reservations->total_children) ?? "" }}>
                             <div class="">
-                                <h5>Childs<h5>
+                                <h5>{{__('reservationIndex.input.total_child')}}<h5>
                             </div>
                         </div>
                     </div>
@@ -95,12 +95,12 @@
 
             <div class="row mb-4">
                 <div class="col">
-                    <h5>Enter Promo Code (Optional)</h5>
+                    <h5>{{__('reservationIndex.input.promo_codes')}}</h5>
                     <input type="text" class="form-control" name = "promo_codes" aria-label="promo-codes">
                 </div>
 
                 <div class="col">
-                    <h5>Additional Request</h5>
+                    <h5>{{__('reservationIndex.input.additional')}}</h5>
                     <input type="text" class="form-control" name = "additional" aria-label="additional-req" value="{{ $isUserHasReservation ? $oldReservation->additional : old('additional', @$reservations->total_children) ?? ""}}">
                 </div>
             </div>
@@ -108,12 +108,12 @@
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-group">
-                        <h5>Price</h5>
+                        <h5>{{__('reservationIndex.input.price')}}</h5>
                         <input type="text" class="form-control" aria-label="Price"  name = "price"  readonly id="selected_price" placeholder="{{ $isUserHasReservation ? 'Rp' . number_format($oldReservation->room->price) : old('total_price', @$reservations->total_price) ?? "" }}" value="">
                     </div>
                 </div>
                 <div class="col d-flex justify-content-end align-items-end">
-                    <button type="Reserve Now" class="btn btn-success mt-auto" style="width:20%" name="reserve_now_btn" id="reserve_now_btn">Reserve Now</button>
+                    <button type="Reserve Now" class="btn btn-success mt-auto" style="width:20%" name="reserve_now_btn" id="reserve_now_btn">{{__('reservationIndex.input.reserve_now_btn')}}</button>
                 </div>
             </div>
         </form>

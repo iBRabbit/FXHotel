@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
 
 define('COOKIE_TIME', 60 * 60 * 24 * 30);
@@ -10,6 +11,7 @@ define('COOKIE_TIME', 60 * 60 * 24 * 30);
 class LoginController extends Controller
 {
     public function index() {
+        App::setlocale(session('lang'));
         return view('login/index', [
             'pageTitle' => 'Login'
         ]);

@@ -3,6 +3,7 @@
 return [
     'title' => 'Transactions',
     'uuid' => 'UUID',
+    'user_name' => 'User Name',
     'date' => 'Date',
     'total_room' => 'Total Room',
     'total_adult' => 'Total Adult',

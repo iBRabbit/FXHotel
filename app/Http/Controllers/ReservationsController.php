@@ -8,6 +8,7 @@ use App\Models\Room;
 use App\Models\Transaction;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Ramsey\Uuid\Uuid;
 
@@ -25,7 +26,8 @@ class ReservationsController extends Controller
     }
 
     public function index(){
-
+        
+        App::setLocale(session('lang'));
         $rooms = Room::all();
         
         $oldReservation = Reservation::where('user_id', Auth::user()->id)
@@ -80,6 +82,7 @@ class ReservationsController extends Controller
 
     public function checkout(Reservation $reservation){
         // dd($reservation);
+        App::setLocale(session('lang'));
         return view('reservations/checkout', [
             'pageTitle' => 'Checkout',
             'reservation' => $reservation->load('room','promo')
@@ -125,6 +128,12 @@ class ReservationsController extends Controller
         ]);
 
         return redirect('/reservations/checkout/'.$reservation->id)->with('success','Reservation updated successfully');
+    }
+
+    public function delete($reservation) {
+        $reservation = Reservation::find($reservation);
+        $reservation->delete();
+        return redirect('/reservations')->with('success','Reservation deleted successfully');
     }
 
 }

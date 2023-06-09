@@ -1,7 +1,7 @@
 @extends('layouts.with_header')
 
 @section('header')
-    Edit Room
+    {{__('roomEdit.header')}}
 @endsection
 
 @section('page-content')
@@ -14,7 +14,7 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="">
-                            <h5>Enter room name</h5>
+                            <h5>{{__('roomEdit.input.name')}}</h5>
                         </label>
                         <input type="text" class="form-control" value="{{ $room->name }}" aria-label="room-name"
                             aria-describedby="basic-addon1" name="name">
@@ -22,7 +22,7 @@
 
                     <div class="col">
                         <label for="">
-                            <h5>Enter room description</h5>
+                            <h5>{{__('roomEdit.input.description')}}</h5>
                         </label>
                         <textarea class="form-control" aria-label="descrption" aria-describedby="basic-addon1" name="description">{{ $room->description }}</textarea>
                     </div>
@@ -31,7 +31,7 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="">
-                            <h5>Price/night</h5>
+                            <h5>{{__('roomEdit.input.price')}}</h5>
                         </label>
                         <input type="text" class="form-control" value="{{ $room->price }}" aria-label="price"
                             aria-describedby="basic-addon1" name = "price">
@@ -40,7 +40,7 @@
                     <div class="col">
                         <div class="col">
                             <label for="">
-                                <h5>Enter room facilities</h5>
+                                <h5>{{__('roomEdit.input.facilities')}}</h5>
                             </label>
                             <textarea class="form-control" aria-label="facilities" aria-describedby="basic-addon1" name="facilities">{{ $room->facilities }}</textarea>
                         </div>
@@ -51,14 +51,14 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="">
-                            <h5>Room Images</h5>
+                            <h5>{{__('roomEdit.input.roomImage')}}</h5>
                         </label>
                         <div class="row">
                             @foreach ($room->roomImages as $image)
                                 <div class="col">
                                     <img src="{{ asset('storage/' . $image->image) }}" alt="" class="img-thumbnail" style="width: 30vw; border-radius: 10px; margin: 0 auto; padding: 0;">
                                     <div class="d-flex justify-content-center">
-                                        <a href="/rooms/{{ $room->id }}/delete-image/{{ $image->id }}" class="btn btn-danger mt-2">Delete</a>
+                                        <a href="/rooms/{{ $room->id }}/delete-image/{{ $image->id }}" class="btn btn-danger mt-2">{{__('roomEdit.input.delete-btn')}}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -69,7 +69,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-primary mb-3" id="add-img-btn">Add Image</button>
+                        <button type="button" class="btn btn-primary mb-3" id="add-img-btn">{{__('roomEdit.input.add-img-btn')}}</button>
                     </div>
                 </div>
                 
@@ -81,7 +81,7 @@
                 </div>
                 
                 <div class="row d-flex justify-content-end p-3">
-                    <button type="submit" class="btn btn-success mb-3 " style="width:20%" >Submit</button>
+                    <button type="submit" class="btn btn-success mb-3 " style="width:20%" >{{__('roomEdit.input.submit-btn')}}</button>
                 </div>
                 
 

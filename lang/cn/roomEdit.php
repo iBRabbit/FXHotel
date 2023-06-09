@@ -9,6 +9,7 @@ return [
         'facilities' => '输入房间设施',
         'roomImage' => '房间图片',
         'add-img-btn' => '添加图片',
-        'submit-btn' => '提交'
+        'submit-btn' => '提交',
+        'delete-btn' => '删除'
     ]
 ];

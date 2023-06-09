@@ -9,6 +9,7 @@ return [
         'facilities' => 'Masukkan fasilitas kamar',
         'roomImage' => 'Gambar Kamar',
         'add-img-btn' => 'Tambah Gambar',
-        'submit-btn' => 'Submit'
+        'submit-btn' => 'Submit',
+        'delete-btn' => 'Hapus'
     ]
 ];

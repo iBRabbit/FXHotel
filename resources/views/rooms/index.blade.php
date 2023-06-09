@@ -12,12 +12,12 @@
         @endif
 
         <div class="search-box d-flex flex-row width">
-            <h2 style="margin-top: 10vh"> <i>List of Rooms</i> </h2>
+            <h2 style="margin-top: 10vh"> <i>{{ __('roomIndex.title') }}</i> </h2>
         </div>
 
         <div class="option-box d-flex flex-row">
             <form class="d-flex mt-2" role="search" style="width:25vw">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value="{{ request('search') ? request('search') : ""}}">
+                <input class="form-control me-2" type="search" placeholder="{{__('roomIndex.search')}}" aria-label="Search" name="search" value="{{ request('search') ? request('search') : ""}}">
                 <button class="btn btn-outline-success" type="submit"><svg xmlns="http://www.w3.org/2000/svg"
                         width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path
@@ -27,7 +27,7 @@
 
             @can('admin')
                 <a href="/rooms/create" class="btn btn-success mt-2 ms-3">
-                    Add Room
+                    {{__('roomIndex.addRoom')}}
                 </a>
             @endcan
         </div>
@@ -50,17 +50,17 @@
                                 <h4 class="card-title" style="margin-block: 4vh">{{ $room->name }}</h4>
 
                                 @if (!Auth::check() || !Auth::user()->isAdmin())
-                                    <a href="/rooms/{{ $room->id }}" class="btn btn-primary me-3" style="width:7vw">View</a>
+                                    <a href="/rooms/{{ $room->id }}" class="btn btn-primary me-3" style="width:7vw">{{__('roomIndex.view_btn')}}</a>
                                 @else
                                     <div class="admin-button d-flex flex-row justify-content-center">
-                                        <a href="/rooms/{{ $room->id }}" class="btn btn-primary me-3">View</a>
+                                        <a href="/rooms/{{ $room->id }}" class="btn btn-primary me-3">{{__('roomIndex.view_btn')}}</a>
 
-                                        <a href="/rooms/{{ $room->id }}/edit" class="btn btn-warning me-3">Update</a>
+                                        <a href="/rooms/{{ $room->id }}/edit" class="btn btn-warning me-3">{{__('roomIndex.update_btn')}}</a>
 
                                         <form action="/rooms/{{ $room->id }}" method="post" class="">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">{{__('roomIndex.delete_btn')}}</button>
                                         </form>
                                     </div>
                                 @endif

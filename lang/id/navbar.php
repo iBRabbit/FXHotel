@@ -7,6 +7,7 @@ return [
     'aboutus' => 'Tentang Kami',
     'dropdown' => [
         'myTransaction' => 'Transaksi Saya',
+        'adminMyTransaction' => 'Semua Transaksi',
         'logout' => 'Keluar'
     ]
 ];

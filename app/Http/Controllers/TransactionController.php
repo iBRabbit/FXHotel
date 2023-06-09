@@ -10,9 +10,18 @@ use Illuminate\Support\Facades\Auth;
 class TransactionController extends Controller
 {
     public function index() {
-        return view('transactions.index',[
-            "pageTitle" => "Transactions",
-            "transactions" => Transaction::where('user_id', Auth::user()->id)->get()
-        ]);
+        app()->setlocale(session('lang'));
+        if(Auth::user()->role == 'Admin'){
+            return view('transactions.index',[
+                "pageTitle" => "Transactions",
+                "transactions" => Transaction::all()
+            ]);
+        }
+        else {
+            return view('transactions.index',[
+                "pageTitle" => "Transactions",
+                "transactions" => Transaction::with('user')->where('user_id', Auth::user()->id)->get()
+            ]);    # code...
+        }
     }
 }

@@ -5,11 +5,11 @@
 @endsection
 
 @section('image-alt')
-    Register Header
+    {{ __('login.imageAlt') }}
 @endsection
 
 @section('image-desc')
-    Tranquil Luxury is Waiting
+    {{ __('login.imageDesc') }}
 @endsection
 
 @section('page-content')
@@ -28,28 +28,28 @@
                     <form action="/login" method="post">
                         @csrf
                         <div class="mb-3">
-                            <label for="email" class="form-label"><h5>Email Address</h5></label>
+                            <label for="email" class="form-label"><h5>{{ __('login.input.email') }}</h5></label>
                             <input type="email" class="form-control" id="email" name="email" value="{{ Cookie::get('is_remember') ? Cookie::get('email') : '' }}">
                         </div>
 
                         <div class="mb-3">
-                            <label for="password" class="form-label"><h5>Password</h5></label>
+                            <label for="password" class="form-label"><h5>{{ __('login.input.password') }}</h5></label>
                             <input type="password" class="form-control" id="password" name="password" value="{{ Cookie::get('is_remember') ? Cookie::get('password') : '' }}">
                         </div>
                         
                         <div class="form-check mb-5">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name = "remember" {{ Cookie::get('is_remember') ? "checked" : ""}}>
                             <label class="form-check-label" for="flexCheckChecked" >
-                                Remember Me
+                                {{ __('login.input.remember') }}
                             </label>
                         </div>
                         
                         <div class="mb-3 d-flex justify-content-center" >
-                            <button type="submit" class="btn btn-primary" style="width:30%">Login</button>
+                            <button type="submit" class="btn btn-primary" style="width:30%">{{ __('login.input.login') }}</button>
                         </div>
                         
                         <div class="mb-3 d-flex justify-content-center">
-                            <p>Don't have an account? <span><a href="/register">Register!</a></span></p>
+                            <p>{{ __('login.input.dontHaveAcc') }}<span><a href="/register">{{ __('login.input.register') }}</a></span></p>
                         </div>
                         
                     </form>

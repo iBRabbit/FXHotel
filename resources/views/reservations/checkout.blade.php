@@ -9,11 +9,11 @@
 @endsection --}}
 
 @section('image-desc')
-    Peaceful Slumber is one step closer.
+    {{__('checkout.imageDesc')}}
 @endsection
 
 @section('page-content')
-    <h3><i> Detail Reservation </i></h3>
+    <h3><i> {{__('checkout.title')}} </i></h3>
     <div class="mt-5 mb-5">
 
         {{-- Success Message --}}
@@ -25,7 +25,7 @@
 
         <div class="row mb-4">
             <div class="col">
-                <h5>Room Type</h5>
+                <h5>{{__('checkout.room_type')}}</h5>
             </div>
             <div class="col">
                 <h5>{{ $reservation->room->name }}</h5>
@@ -34,7 +34,7 @@
 
         <div class="row mb-4">
             <div class="col">
-                <h5>Number of Room</h5>
+                <h5>{{__('checkout.total_rooms')}}</h5>
             </div>
             <div class="col">
                 <h5>{{ $reservation->total_room }}</h5>
@@ -43,7 +43,7 @@
 
         <div class="row mb-4">
             <div class="col">
-                <h5>Date</h5>
+                <h5>{{__('checkout.dates')}}</h5>
             </div>
             <div class="col">
                 <h5>{{ date_format(date_create($reservation->from), 'M d, Y') }} -
@@ -53,16 +53,16 @@
 
         <div class="row mb-4">
             <div class="col">
-                <h5>Number of Guest(s)</h5>
+                <h5>{{__('checkout.totalGuest')}}</h5>
             </div>
             <div class="col">
-                <h5>{{ $reservation->total_adult }} Adult(s) {{ $reservation->total_children }} Children(s)</h5>
+                <h5>{{ $reservation->total_adult }} {{__('checkout.total_adult')}} {{ $reservation->total_children }} {{__('checkout.total_child')}}</h5>
             </div>
         </div>
 
         <div class="row mb-4">
             <div class="col">
-                <h5>Promo Code (Optional)</h5>
+                <h5>{{__('checkout.promo_codes')}}</h5>
             </div>
             <div class="col">
                 <h5>{{ $reservation->promo->promo_code ?? '-' }}</h5>
@@ -71,7 +71,7 @@
 
         <div class="row mb-4">
             <div class="col">
-                <h5>Additional Request</h5>
+                <h5>{{__('checkout.additional')}}</h5>
             </div>
             <div class="col">
                 <h5>{{ $reservation->additional }}</h5>
@@ -80,7 +80,7 @@
 
         <div class="row mb-4">
             <div class="col">
-                <h5>Total Price</h5>
+                <h5>{{__('checkout.totalPrice')}}</h5>
             </div>
             <div class="col">
                 <h5>Rp {{ number_format($reservation->total_price) }}</h5>
@@ -91,19 +91,23 @@
             <div class="col mr-auto p-3">
                 <form action="/reservations" method="get">
                     @csrf
-                        <button type="submit" class="btn btn-primary mb-3" style="width:20%">Back</button>
+                        <button type="submit" class="btn btn-primary mb-3" style="width:20%">{{__('checkout.back_btn')}}</button>
                 </form>
             </div>
             <div class="col">
                 <div class="row justify-content-end p-3">
                     <div class="col justify-content-around p-3">
-                        <button type="Cancel" class="btn btn-danger mb-3" style="width:40%">Cancel</button>
+                        <form action="/reservations/{{ $reservation->id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="Cancel" class="btn btn-danger mb-3" style="width:40%">{{__('checkout.cancel_btn')}}</button>
+                        </form>
                     </div>
                     <div class="col justify-content-around p-3">
                         <form action="/reservations/checkout/{{ $reservation->id }}" method="POST">
                             @csrf
                             @method('put')
-                            <button type="Submit" class="btn btn-success mb-3" style="width:40%">Check Out</button>
+                            <button type="Submit" class="btn btn-success mb-3" style="width:40%">{{__('checkout.checkout_btn')}}</button>
                         </form>
                     </div>
                 </div>
