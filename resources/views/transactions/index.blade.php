@@ -24,7 +24,9 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $tr->uuid }}</td>
-                    <td>{{ $tr->user->name }}</td>
+                    @if(Auth::user()->role == 'Admin')
+                        <td>{{ $tr->user->name }}</td>
+                    @endif
                     <td>{{ $tr->created_at }}</td>
                     <td>{{ $tr->total_room }}</td>
                     <td>{{ $tr->total_adult }}</td>
