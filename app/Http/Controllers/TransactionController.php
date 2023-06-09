@@ -11,9 +11,17 @@ class TransactionController extends Controller
 {
     public function index() {
         app()->setlocale(session('lang'));
-        return view('transactions.index',[
-            "pageTitle" => "Transactions",
-            "transactions" => Transaction::where('user_id', Auth::user()->id)->get()
-        ]);
+        if(Auth::user()->role == 'Admin'){
+            return view('transactions.index',[
+                "pageTitle" => "Transactions",
+                "transactions" => Transaction::all()
+            ]);
+        }
+        else {
+            return view('transactions.index',[
+                "pageTitle" => "Transactions",
+                "transactions" => Transaction::with('user')->where('user_id', Auth::user()->id)->get()
+            ]);    # code...
+        }
     }
 }

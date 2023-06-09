@@ -53,7 +53,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="/transactions">{{ __('navbar.dropdown.myTransaction') }}</a>
+                                <a class="dropdown-item" href="/transactions">{{ Auth::user()->role == 'Admin' ?  __('navbar.dropdown.adminMyTransaction') : __('navbar.dropdown.myTransaction')}}</a>
                             </li>
                             <li>
                                 <form action="/logout" method="post">

@@ -97,7 +97,11 @@
             <div class="col">
                 <div class="row justify-content-end p-3">
                     <div class="col justify-content-around p-3">
-                        <button type="Cancel" class="btn btn-danger mb-3" style="width:40%">{{__('checkout.cancel_btn')}}</button>
+                        <form action="/reservations/{{ $reservation->id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="Cancel" class="btn btn-danger mb-3" style="width:40%">{{__('checkout.cancel_btn')}}</button>
+                        </form>
                     </div>
                     <div class="col justify-content-around p-3">
                         <form action="/reservations/checkout/{{ $reservation->id }}" method="POST">

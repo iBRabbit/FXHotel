@@ -130,4 +130,10 @@ class ReservationsController extends Controller
         return redirect('/reservations/checkout/'.$reservation->id)->with('success','Reservation updated successfully');
     }
 
+    public function delete($reservation) {
+        $reservation = Reservation::find($reservation);
+        $reservation->delete();
+        return redirect('/reservations')->with('success','Reservation deleted successfully');
+    }
+
 }

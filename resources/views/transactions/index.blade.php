@@ -8,6 +8,9 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">{{__('transaction.uuid')}}</th>
+                    @if(Auth::user()->role == 'Admin')
+                        <th scope="col">{{__('transaction.user_name')}}</th>
+                    @endif
                     <th scope="col">{{__('transaction.date')}}</th>
                     <th scope="col">{{__('transaction.total_room')}}</th>
                     <th scope="col">{{__('transaction.total_adult')}}</th>
@@ -21,6 +24,7 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $tr->uuid }}</td>
+                    <td>{{ $tr->user->name }}</td>
                     <td>{{ $tr->created_at }}</td>
                     <td>{{ $tr->total_room }}</td>
                     <td>{{ $tr->total_adult }}</td>

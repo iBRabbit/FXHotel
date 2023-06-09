@@ -6,7 +6,8 @@ return [
     'facilities' => 'Facilities',
     'aboutus' => 'About Us',
     'dropdown' => [
-        'myTransaction' => 'My Transaction',
+        'myTransaction' => 'My Transactions',
+        'adminMyTransaction' => 'All Transactions',
         'logout' => 'Logout'
     ]
 ];
