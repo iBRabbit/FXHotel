@@ -50,7 +50,7 @@ class ReservationsController extends Controller
         $request->validate([
             'room_type' => 'required',
             'total_rooms' => 'required|integer|min:1|max:100',
-            'from' => 'required|date|before:to',
+            'from' => 'required|date|before:to|after:today',
             'to' => 'required|date',
             'price' => 'required|integer',
             'promo_codes' => 'nullable|exists:promos,promo_code',
@@ -84,7 +84,6 @@ class ReservationsController extends Controller
     }
 
     public function checkout(Reservation $reservation){
-        // dd($reservation);
         App::setLocale(session('lang'));
         return view('reservations/checkout', [
             'pageTitle' => 'Checkout',
@@ -96,8 +95,9 @@ class ReservationsController extends Controller
         $reservation->update([
             'status' => "Paid"
         ]);
+
         Transaction::create([
-            'uuid' => Uuid::uuid4()->toString(),
+            'uuid' => strtoupper(substr(Uuid::uuid4()->toString(), 0, 8)),
             'user_id' => $reservation->user_id,
             'total_room' => $reservation->total_room,
             'total_adult' => $reservation->total_adult,
