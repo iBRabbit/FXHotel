@@ -55,10 +55,13 @@ class ReservationsController extends Controller
             'price' => 'required|integer',
             'promo_codes' => 'nullable|exists:promos,promo_code',
             'additional_req' => 'nullable',
-            'total_adult' => 'nullable|integer|min:1|max:100',
-            'total_child' => 'nullable|integer|min:1|max:100'
+            'total_adult' => 'nullable|integer|min:0|max:100',
+            'total_child' => 'nullable|integer|min:0|max:100'
         ]);
         
+        if($request->total_adult + $request->total_child <= 0)
+            return redirect('/reservations')->with('error','Total adult and total child must be greater than 0');
+
         $promo = Promo::where('promo_code', $request->promo_codes)->first();
 
         $total_price = $this->computePrice(Room::find($request->room_type), $request->total_rooms, $request->from, $request->to, $promo);
