@@ -1,7 +1,7 @@
 @extends('layouts.banner_view')
 
 @section('image-url')
-    {{ asset('images/ect/header-reservation.jpg') }}
+    {{ asset('images/register/header-register.jpg') }}
 @endsection
 
 {{-- @section('image-alt')
