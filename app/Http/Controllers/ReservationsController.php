@@ -27,6 +27,9 @@ class ReservationsController extends Controller
 
     public function index(){
         
+        if(Auth::user()->role == 'Admin')
+            return redirect('/');
+
         App::setLocale(session('lang'));
         $rooms = Room::all();
         
