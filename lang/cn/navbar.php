@@ -9,5 +9,6 @@ return [
         'myTransaction' => '我的交易',
         'adminMyTransaction' => '所有交易',
         'logout' => '登出'
-    ]
+    ],
+    'signUp' => '注册'
 ];

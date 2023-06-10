@@ -65,7 +65,7 @@
                     </div>
                 @else
                     <li class="nav-item ps-2 pe-2">
-                        <a class="nav-link text-primary" href="/register">Sign Up</a>
+                        <a class="nav-link text-primary" href="/register">{{ __('navbar.signUp') }}</a>
                     </li>
                 @endif
 

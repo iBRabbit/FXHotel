@@ -9,5 +9,6 @@ return [
         'myTransaction' => 'Transaksi Saya',
         'adminMyTransaction' => 'Semua Transaksi',
         'logout' => 'Keluar'
-    ]
+    ],
+    'signUp' => 'Daftar'
 ];

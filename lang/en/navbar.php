@@ -9,5 +9,6 @@ return [
         'myTransaction' => 'My Transactions',
         'adminMyTransaction' => 'All Transactions',
         'logout' => 'Logout'
-    ]
+    ],
+    'signUp' => 'Sign Up'
 ];
