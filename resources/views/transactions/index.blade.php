@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                
+
                 @foreach ($transactions as $tr)
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
@@ -31,7 +31,7 @@
                     <td>{{ $tr->total_room }}</td>
                     <td>{{ $tr->total_adult }}</td>
                     <td>{{ $tr->total_children }}</td>
-                    <td>{{ $tr->total_price }}</td>
+                    <td>Rp. {{ number_format($tr->total_price) }}</td>
                 </tr>
                 @endforeach
             </tbody>
