@@ -23,11 +23,11 @@
         <form action="{{ $isUserHasReservation ? "/reservations/" . $oldReservation->id : "/reservations" }}" method="post" enctype="multipart/form-data">
             @csrf
 
-            {{-- @if (session('error'))
+            @if (session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
                 </div>
-            @endif --}}
+            @endif
 
             @if ($isUserHasReservation)
                 @method('PUT')
