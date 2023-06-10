@@ -32,6 +32,7 @@ class RoomController extends Controller
      */
     public function create()
     {
+        App::setlocale(session('lang'));
         return view('rooms/create', [
             'pageTitle' => 'Create Room'
         ]);

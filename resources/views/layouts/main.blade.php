@@ -54,31 +54,6 @@
         </script>
     @endif
 
-    <script>
-        let en_dropdown = document.getElementById("en_dropdown");
-        let id_dropdown = document.getElementById("id_dropdown");
-        let cn_dropdown = document.getElementById("cn_dropdown");
-        // let btn = document.getElementById("btn");
-
-        // btn.addEventListener("click", () => {
-        //     console.log("Masuk");
-        // });
-
-        // en_dropdown.addEventListener("click", () => {
-        //     {{ Cookie::queue(Cookie::make('lang', 'en')) }}
-        //     console.log("Masuk")
-        // });
-
-        // id_dropdown.addEventListener("click", () => {
-        //     {{ Cookie::queue(Cookie::make('lang', 'id')) }}
-        // });
-
-        // cn_dropdown.addEventListener("click", () => {
-        //     {{ Cookie::queue(Cookie::make('lang', 'cn')) }}
-        // });
-
-
-    </script>
 </body>
 
 </html>

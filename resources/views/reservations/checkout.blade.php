@@ -87,30 +87,24 @@
             </div>
         </div>
 
-        <div class="row mb-4 mt-5 d-flex">
-            <div class="col mr-auto p-3">
+        <div class="row mt-5">
+            <div class="col">
                 <form action="/reservations" method="get">
                     @csrf
-                        <button type="submit" class="btn btn-primary mb-3" style="width:20%">{{__('checkout.back_btn')}}</button>
+                    <button type="submit" class="btn btn-primary mb-3" style="width: 20%">{{__('checkout.back_btn')}}</button>
                 </form>
             </div>
-            <div class="col">
-                <div class="row justify-content-end p-3">
-                    <div class="col justify-content-around p-3">
-                        <form action="/reservations/{{ $reservation->id }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <button type="Cancel" class="btn btn-danger mb-3" style="width:40%">{{__('checkout.cancel_btn')}}</button>
-                        </form>
-                    </div>
-                    <div class="col justify-content-around p-3">
-                        <form action="/reservations/checkout/{{ $reservation->id }}" method="POST">
-                            @csrf
-                            @method('put')
-                            <button type="Submit" class="btn btn-success mb-3" style="width:40%">{{__('checkout.checkout_btn')}}</button>
-                        </form>
-                    </div>
-                </div>
+            <div class="col d-flex justify-content-end w-100">
+                <form action="/reservations/{{ $reservation->id }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button type="Cancel" class="btn btn-danger mb-3 me-2" >{{__('checkout.cancel_btn')}}</button>
+                </form>
+                <form action="/reservations/checkout/{{ $reservation->id }}" method="POST">
+                    @csrf
+                    @method('put')
+                    <button type="Submit" class="btn btn-success mb-3" >{{__('checkout.checkout_btn')}}</button>
+                </form>
             </div>
         </div>
     </div>

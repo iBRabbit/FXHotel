@@ -1,7 +1,7 @@
 @extends('layouts.with_header')
 
 @section('header')
-    New Room
+    {{__('roomCreate.header')}}
 @endsection
 
 @section('page-content')
@@ -13,42 +13,42 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="">
-                            <h5>Enter room name</h5>
+                            <h5>{{__('roomCreate.input.name')}}</h5>
                         </label>
-                        <input type="text" class="form-control" placeholder="Example: Suit Room" aria-label="room-name"
+                        <input type="text" class="form-control" placeholder="{{ __('roomCreate.input.placeholderName') }}" aria-label="room-name"
                             aria-describedby="basic-addon1" name="name">
                     </div>
 
                     <div class="col">
                         <label for="">
-                            <h5>Enter room description</h5>
+                            <h5>{{__('roomCreate.input.description')}}</h5>
                         </label>
-                        <textarea class="form-control" placeholder="Example: A good room" aria-label="descrption" aria-describedby="basic-addon1" name="description"></textarea>
+                        <textarea class="form-control" placeholder="{{ __('roomCreate.input.placeholderDescription') }} " aria-label="descrption" aria-describedby="basic-addon1" name="description"></textarea>
                     </div>
                 </div>
 
                 <div class="row mb-4">
                     <div class="col">
                         <label for="">
-                            <h5>Price/night</h5>
+                            <h5>{{__('roomCreate.input.price')}}</h5>
                         </label>
-                        <input type="text" class="form-control" placeholder="Example: 50000" aria-label="price"
+                        <input type="text" class="form-control" placeholder="{{ __('roomCreate.input.placeholderPrice') }}" aria-label="price"
                             aria-describedby="basic-addon1" name = "price">
                     </div>
 
                     <div class="col">
                         <div class="col">
                             <label for="">
-                                <h5>Enter room facilities</h5>
+                                <h5>{{__('roomCreate.input.facilities')}}</h5>
                             </label>
-                            <textarea class="form-control" placeholder="Example: Swimming Pool, Biliard, etc." aria-label="facilities" aria-describedby="basic-addon1" name="facilities"></textarea>
+                            <textarea class="form-control" placeholder="{{ __('roomCreate.input.placeholderFacilities') }}" aria-label="facilities" aria-describedby="basic-addon1" name="facilities"></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <button type="button" class="btn btn-primary mb-3" id="add-img-btn">Add Image</button>
+                        <button type="button" class="btn btn-primary mb-3" id="add-img-btn">{{__('roomCreate.input.add-img-btn')}}</button>
                     </div>
                 </div>
                 
@@ -60,7 +60,7 @@
                 </div>
                 
                 <div class="row d-flex justify-content-end p-3">
-                    <button type="submit" class="btn btn-success mb-3 " style="width:20%" >Submit</button>
+                    <button type="submit" class="btn btn-success mb-3 " style="width:20%" >{{__('roomCreate.input.submit-btn')}}</button>
                 </div>
                 
 
